@@ -1,5 +1,10 @@
 package entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
+
 /**
  * Created by piatr on 16.05.17.
  * список отделений. в больнице их много
@@ -11,5 +16,11 @@ package entity;
  * вопрос - надо ли делать для этого отдельные таблицы или использовать джава-коллекции(arrayList, напр.) для каждой сессии?
  * в среднем в отделении лежит 40-60 человек
  */
-public class ClinicDepartmentEntity {
+@Entity
+@Table(name = "department")
+public class ClinicDepartmentEntity implements Serializable{
+
+    private String name;
+    private int volumeOfDepartment;
+
 }

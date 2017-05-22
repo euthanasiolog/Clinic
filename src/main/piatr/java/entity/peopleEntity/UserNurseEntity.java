@@ -1,4 +1,10 @@
-package entity;
+package entity.peopleEntity;
+
+import abstractClasses.ClinicEmployee;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by piatr on 16.05.17.
@@ -9,5 +15,7 @@ package entity;
  * медсестра их менять сама не может(может, например, делать примечания, но не менять)
  * и ей видны только пациенты, лежащие в данный момент лежат в отделени
  */
-public class UserNurseEntity {
+@Entity
+@Table(name = "nurse")
+public class UserNurseEntity extends ClinicEmployee implements Serializable{
 }

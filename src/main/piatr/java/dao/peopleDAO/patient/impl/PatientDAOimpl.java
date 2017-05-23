@@ -1,4 +1,4 @@
-package dao.peopleDAO.impl;
+package dao.peopleDAO.patient.impl;
 
 /**
  * Created by piatr on 22.05.17.

@@ -1,4 +1,4 @@
-package dao.peopleDAO;
+package dao.peopleDAO.patient;
 
 /**
  * Created by piatr on 23.05.17.

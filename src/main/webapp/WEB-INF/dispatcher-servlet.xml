@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <context:component-scan base-package="dao"/>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost/test" />
@@ -18,6 +20,18 @@
                 <property name="database" value="MYSQL" />
                 <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
             </bean>
+        </property>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="entity"/>
+        <!-- чего-то ругается((
+        <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+            </props>
         </property>
     </bean>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />

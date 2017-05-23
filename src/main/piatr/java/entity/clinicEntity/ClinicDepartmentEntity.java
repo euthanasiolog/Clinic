@@ -1,4 +1,4 @@
-package entity;
+package entity.clinicEntity;
 
 
 import javax.persistence.Entity;

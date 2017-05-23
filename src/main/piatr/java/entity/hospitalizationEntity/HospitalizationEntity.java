@@ -1,7 +1,7 @@
 package entity.hospitalizationEntity;
 
 
-import entity.ClinicDepartmentEntity;
+import entity.clinicEntity.ClinicDepartmentEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

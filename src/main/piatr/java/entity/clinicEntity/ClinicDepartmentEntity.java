@@ -1,8 +1,9 @@
-package entity.clinicEntity;
+package java.entity.clinicEntity;
 
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.abstractClasses.BaseEntity;
 import java.io.Serializable;
 
 /**
@@ -18,7 +19,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "department")
-public class ClinicDepartmentEntity implements Serializable{
+public class ClinicDepartmentEntity extends BaseEntity{
 
     private String name;
     private int volumeOfDepartment;

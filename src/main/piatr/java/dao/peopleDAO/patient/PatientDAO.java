@@ -1,11 +1,12 @@
-package dao.peopleDAO.patient;
+package java.dao.peopleDAO.patient;
 
-import entity.peopleEntity.PatientEntity;
+import java.entity.peopleEntity.PatientEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.entity.peopleEntity.PatientEntity;
 import java.util.List;
 
 /**

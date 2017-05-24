@@ -1,9 +1,11 @@
-package entity.hospitalizationEntity;
+package java.entity.hospitalizationEntity;
 
 
 import entity.clinicEntity.ClinicDepartmentEntity;
 
 import javax.persistence.*;
+import java.abstractClasses.BaseEntity;
+import java.entity.clinicEntity.ClinicDepartmentEntity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -17,7 +19,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "hospitalization")
-public class HospitalizationEntity implements Serializable{
+public class HospitalizationEntity extends BaseEntity {
 
     @Column
     @Id

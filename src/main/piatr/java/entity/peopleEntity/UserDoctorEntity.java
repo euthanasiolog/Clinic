@@ -1,9 +1,10 @@
-package entity.peopleEntity;
+package java.entity.peopleEntity;
 
 import abstractClasses.ClinicEmployee;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.abstractClasses.ClinicEmployee;
 import java.io.Serializable;
 
 /**
@@ -13,6 +14,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "doctor")
-public class UserDoctorEntity extends ClinicEmployee implements Serializable{
+public class UserDoctorEntity extends ClinicEmployee{
 
 }

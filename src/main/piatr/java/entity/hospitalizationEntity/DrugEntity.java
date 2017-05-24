@@ -1,4 +1,4 @@
-package entity.hospitalizationEntity;
+package java.entity.hospitalizationEntity;
 
 import Enums.DrugType;
 import Enums.DrugUseType;
@@ -6,6 +6,7 @@ import Enums.DrugUseType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.abstractClasses.BaseEntity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -13,7 +14,7 @@ import java.time.LocalTime;
 /**
  * Created by piatr on 21.05.17.
  */
-public class DrugEntity implements Serializable{
+public class DrugEntity extends BaseEntity{
 
     @Column
     @Id

@@ -1,4 +1,4 @@
-package dao.peopleDAO.nurse;
+package java.dao.peopleDAO.nurse;
 
 /**
  * Created by piatr on 23.05.17.

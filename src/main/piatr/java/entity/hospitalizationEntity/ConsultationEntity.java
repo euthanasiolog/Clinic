@@ -1,9 +1,10 @@
-package entity.hospitalizationEntity;
+package java.entity.hospitalizationEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.abstractClasses.BaseEntity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * Created by piatr on 21.05.17.
  */
 @Entity
-public class ConsultationEntity implements Serializable {
+public class ConsultationEntity extends BaseEntity {
     @Column
     @Id
     @GeneratedValue

@@ -1,7 +1,9 @@
-package dao.peopleDAO.patient.impl;
+package java.dao.peopleDAO.patient.impl;
 
-import dao.peopleDAO.patient.PatientDAO;
-import entity.peopleEntity.PatientEntity;
+import java.dao.peopleDAO.patient.PatientDAO;
+import java.entity.peopleEntity.PatientEntity;
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,11 @@ public class PatientDAOimpl implements PatientDAO{
     SessionFactory sessionFactory;
 
     @Override
+    public PatientEntity createPatient(PatientEntity patientEntity) {
+        return patientEntity;
+    }
+
+    @Override
     public PatientEntity getPatient(long patientId) {
         return (PatientEntity) sessionFactory.getCurrentSession().get(PatientEntity.class, patientId);
     }
@@ -30,5 +37,10 @@ public class PatientDAOimpl implements PatientDAO{
     @Override
     public void deletePatient(PatientEntity patientEntity) {
         sessionFactory.getCurrentSession().delete(patientEntity);
+    }
+
+    @Override
+    public List<PatientEntity> getPatienByDepartment(String departmentName) {
+        return null;
     }
 }

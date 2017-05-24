@@ -4,7 +4,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="java.entity"/>
+    <context:component-scan base-package="java.dao"/>
+    <context:component-scan base-package="java.abstractClasses"/>
+    <context:component-scan base-package="java.controllers"/>
+    <context:component-scan base-package="java.dto"/>
+    <context:component-scan base-package="java.service"/>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost/test" />
@@ -24,7 +30,7 @@
     </bean>
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="entity"/>
+        <property name="packagesToScan" value="java"/>
         <!-- чего-то ругается((
         <property name="hibernate.hbm2ddl.auto">update</property>-->
         <property name="hibernateProperties">

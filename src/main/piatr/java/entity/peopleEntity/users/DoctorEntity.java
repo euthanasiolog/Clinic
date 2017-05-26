@@ -1,4 +1,4 @@
-package java.entity.peopleEntity;
+package java.entity.peopleEntity.users;
 
 import abstractClasses.ClinicEmployee;
 
@@ -14,6 +14,5 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "doctor")
-public class UserDoctorEntity extends ClinicEmployee{
-
+public class DoctorEntity extends ClinicEmployee{
 }

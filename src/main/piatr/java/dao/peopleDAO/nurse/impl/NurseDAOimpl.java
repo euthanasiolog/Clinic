@@ -1,11 +1,11 @@
 package java.dao.peopleDAO.nurse.impl;
 
-import java.dao.DAO_CRUD_impl;
-import java.dao.peopleDAO.nurse.NurseDAO;
-import java.entity.peopleEntity.UserNurseEntity;
+import java.dao.GenericDAOImpl;
+import java.dao.peopleDAO.nurse.NurseGenericDAO;
+import java.entity.peopleEntity.users.NurseEntity;
 
 /**
  * Created by piatr on 23.05.17.
  */
-public class NurseDAOimpl extends DAO_CRUD_impl<UserNurseEntity> implements NurseDAO{
+public class NurseDAOimpl extends GenericDAOImpl<NurseEntity> implements NurseGenericDAO {
 }

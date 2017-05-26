@@ -15,11 +15,11 @@ import java.lang.reflect.Type;
  */
 @Repository
 @Transactional
-public abstract class DAO_CRUD_impl<T extends BaseEntity> implements DAO_CRUD<T>{
+public abstract class GenericDAOImpl<T extends BaseEntity> implements GenericDAO<T> {
 
     private final Class<T> entityClass;
 
-    public DAO_CRUD_impl() {
+    public GenericDAOImpl() {
         Type type = getClass().getGenericSuperclass();
         ParameterizedType parameterizedType = (ParameterizedType) type;
         entityClass = (Class) parameterizedType.getActualTypeArguments()[0];

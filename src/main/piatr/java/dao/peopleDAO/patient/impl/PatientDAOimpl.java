@@ -1,7 +1,7 @@
 package java.dao.peopleDAO.patient.impl;
 
-import java.dao.DAO_CRUD_impl;
-import java.dao.peopleDAO.patient.PatientDAO;
+import java.dao.GenericDAOImpl;
+import java.dao.peopleDAO.patient.PatientGenericDAO;
 import java.entity.peopleEntity.PatientEntity;
 
 import org.springframework.stereotype.Repository;
@@ -12,5 +12,5 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository("patientDAOimpl")
-public class PatientDAOimpl extends DAO_CRUD_impl<PatientEntity> implements PatientDAO{
+public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements PatientGenericDAO {
 }

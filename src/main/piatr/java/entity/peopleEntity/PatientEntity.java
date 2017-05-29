@@ -1,7 +1,5 @@
 package java.entity.peopleEntity;
 
-import abstractClasses.Human;
-import entity.hospitalizationEntity.HospitalizationEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

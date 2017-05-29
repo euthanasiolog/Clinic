@@ -11,6 +11,14 @@
     <title>Welcome!</title>
 </head>
 <body>
-
+<h1>Приветствуем вас в нашей клинике!</h1>
+<form action="/signIn">
+    <input type="submit" name="Вход">
+</form>
+    <form action="/reg">
+        зарегестрируйтесь
+        <input type="submit" name="Регистрация">
+    </form>
+<div>Тут всякое бла-бла-бла про сайт</div>
 </body>
 </html>

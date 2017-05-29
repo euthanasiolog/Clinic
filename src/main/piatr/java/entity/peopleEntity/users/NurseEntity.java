@@ -1,11 +1,8 @@
 package java.entity.peopleEntity.users;
 
-import abstractClasses.ClinicEmployee;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.abstractClasses.ClinicEmployee;
-import java.io.Serializable;
 
 /**
  * Created by piatr on 16.05.17.

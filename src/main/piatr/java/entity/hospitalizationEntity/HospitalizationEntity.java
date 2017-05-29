@@ -1,7 +1,7 @@
 package java.entity.hospitalizationEntity;
 
 
-import entity.clinicEntity.ClinicDepartmentEntity;
+
 
 import javax.persistence.*;
 import java.abstractClasses.BaseEntity;

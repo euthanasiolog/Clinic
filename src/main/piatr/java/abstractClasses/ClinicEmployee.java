@@ -15,5 +15,5 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ClinicEmployee extends User implements Serializable{
     @Column
-    ClinicDepartmentEntity department;
+    public ClinicDepartmentEntity department;
 }

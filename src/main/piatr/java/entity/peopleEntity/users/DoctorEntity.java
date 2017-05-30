@@ -13,4 +13,8 @@ import java.abstractClasses.ClinicEmployee;
 @Entity
 @Table(name = "doctor")
 public class DoctorEntity extends ClinicEmployee{
+    public DoctorEntity(String firstName, String secondName) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
 }

@@ -12,7 +12,11 @@ public class RegForm {
 
     @NotBlank
     @Length(min = 2, max = 20)
-    private String name;
+    private String firstName;
+
+    @NotBlank
+    @Length(min = 2, max = 20)
+    private String secondName;
 
     @NotBlank
     @Email
@@ -27,18 +31,27 @@ public class RegForm {
     private String confirmPassword;
 
     public RegForm() {
-        this.name = "";
+        this.firstName = "";
+        this.secondName = "";
         this.email = "";
         this.password = "";
         this.confirmPassword = "";
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getEmail() {

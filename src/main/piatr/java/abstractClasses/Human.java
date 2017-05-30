@@ -14,13 +14,13 @@ public abstract class Human extends BaseEntity implements Serializable{
     @Column
     @Id
     @GeneratedValue
-    long id;
+    public long id;
     @Column
-    String firstName;
+    public String firstName;
     @Column
-    String secondName;
+    public String secondName;
     @Column
-    String patronymic;
+    public String patronymic;
     @Column
-    LocalDateTime dateOfBirth;
+    public LocalDateTime dateOfBirth;
 }

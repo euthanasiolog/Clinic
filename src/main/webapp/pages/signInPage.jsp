@@ -13,8 +13,13 @@
 </head>
 <body>
     <form:form action="/signIn" method="post" commandName="signIn">
+        <form:select path="type">
+            <form:option disabled="true" value="Вы кто?"/>
+            <form:option value="doctor">Доктор</form:option>
+            <form:option value="nurse">Медсестра</form:option>
+        </form:select>
         <div>Введите логин:</div>
-        <form:input path="name"/><br>
+        <form:input path="login"/><br>
         <div>Введите пароль:</div>
         <form:password path="password"/><br>
         <input type="submit">

@@ -14,7 +14,9 @@
 </head>
 <body>
 <form:form action="/reg" method="post" commandName="regForm">
-    <form:input path="name"/><br>
+    <form:input path="login"/><br>
+    <form:input path="firstName"/><br>
+    <form:input path="secondName"/><br>
     <form:input path="email" /><br>
     <form:password path="password" /><br>
     <form:password path="confirmPassword"/><br>

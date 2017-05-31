@@ -15,13 +15,20 @@ import java.service.peopleService.doctor.impl.DoctorServiceImpl;
  */
 @Controller
 public class RegistrationController {
+    @RequestMapping(value = "/reg", method = RequestMethod.GET)
+    public String reg(ModelMap modelMap){
+        RegForm regForm = new RegForm();
+        modelMap.put("regForm", regForm);
+        return "regPage";
+    }
+
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
     public String registration(@Valid final RegForm regForm, ModelMap modelMap, final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "regPage";
         else if (regForm.getPassword().equals(regForm.getConfirmPassword())) {
             modelMap.addAttribute("name", regForm.getFirstName());
             DoctorServiceImpl doctorService = new DoctorServiceImpl();
-            doctorService.create(new DoctorEntity(regForm.getFirstName(), regForm.getSecondName()));
+            doctorService.create(new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword()));
             return "regOk";
         }
         return "regPage";

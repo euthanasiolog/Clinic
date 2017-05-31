@@ -13,8 +13,10 @@ import java.abstractClasses.ClinicEmployee;
 @Entity
 @Table(name = "doctor")
 public class DoctorEntity extends ClinicEmployee{
-    public DoctorEntity(String firstName, String secondName) {
+    public DoctorEntity(String firstName, String secondName, String login, String password) {
         this.firstName = firstName;
         this.secondName = secondName;
+        this.login = login;
+        super.setPassword(password);
     }
 }

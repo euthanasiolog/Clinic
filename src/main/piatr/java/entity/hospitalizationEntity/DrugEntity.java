@@ -5,9 +5,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.abstractClasses.BaseEntity;
+import java.enumerations.DrugType;
+import java.enumerations.DrugUseType;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.enums.*;
+
 
 /**
  * Created by piatr on 21.05.17.
@@ -50,7 +52,21 @@ public class DrugEntity extends BaseEntity{
     @Column
     DrugUseType drugUseType;
 
+    public DrugType getDrugType() {
+        return drugType;
+    }
 
+    public void setDrugType(DrugType drugType) {
+        this.drugType = drugType;
+    }
+
+    public DrugUseType getDrugUseType() {
+        return drugUseType;
+    }
+
+    public void setDrugUseType(DrugUseType drugUseType) {
+        this.drugUseType = drugUseType;
+    }
 
     public String getName() {
         return name;
@@ -92,21 +108,7 @@ public class DrugEntity extends BaseEntity{
         this.useTime = useTime;
     }
 
-    public DrugType getDrugType() {
-        return drugType;
-    }
 
-    public void setDrugType(DrugType drugType) {
-        this.drugType = drugType;
-    }
-
-    public DrugUseType getDrugUseType() {
-        return drugUseType;
-    }
-
-    public void setDrugUseType(DrugUseType drugUseType) {
-        this.drugUseType = drugUseType;
-    }
 
     public int getNumberOfDrug() {
         return numberOfDrug;

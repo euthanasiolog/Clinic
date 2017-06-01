@@ -1,4 +1,4 @@
-package Enums;
+package java.enumerations;
 
 /**
  * Created by piatr on 21.05.17.

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.entity.peopleEntity.users.DoctorEntity;
+import java.forms.RegForm;
 import java.service.peopleService.doctor.impl.DoctorServiceImpl;
 
 /**
@@ -32,5 +33,9 @@ public class RegistrationController {
             return "regOk";
         }
         return "regPage";
+    }
+    @RequestMapping(value = "/regOk")
+    public String regOk(){
+        return "mainPage";
     }
 }

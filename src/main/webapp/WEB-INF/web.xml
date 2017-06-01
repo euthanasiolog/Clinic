@@ -27,18 +27,18 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+  <!--</listener>-->
 
   <!--
-    - Declare Spring request listener which sets up the required RequestAttributes
-    - to support Springs and Cocoon custom bean scopes like the request scope or the
-    - session scope.
+       - Declare Spring request listener which sets up the required RequestAttributes
+       - to support Springs and Cocoon custom bean scopes like the request scope or the
+       - session scope.
     -->
-  <listener>
-    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-  </listener>
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
+  <!--</listener>-->
 
   <servlet>
     <servlet-name>dispatcher</servlet-name>

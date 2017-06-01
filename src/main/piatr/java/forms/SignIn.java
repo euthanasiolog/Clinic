@@ -1,4 +1,4 @@
-package java.controllers;
+package java.forms;
 
 /**
  * Created by piatr on 31.05.17.

@@ -5,6 +5,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.forms.SignIn;
+
 /**
  * Created by piatr on 23.05.17.
  */
@@ -20,9 +22,10 @@ public class SignInController {
     public String signIn(ModelMap modelMap, SignIn signIn){
         if(signIn.getType().equals("doctor")){
 
-            return "";
+            return "mainPage";
         }else if (signIn.getType().equals("nurse")){
-            return "";
+
+            return "mainPage";
         } return "signInPage";
     }
 }

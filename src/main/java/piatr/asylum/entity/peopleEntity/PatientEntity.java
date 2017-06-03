@@ -3,10 +3,7 @@ package piatr.asylum.entity.peopleEntity;
 
 import piatr.asylum.abstractClasses.Human;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 
@@ -22,8 +19,7 @@ import java.util.Set;
 public class PatientEntity extends Human {
 
     @Column
-    @ManyToOne
+    @OneToMany
     private Set<HospitalizationEntity> hospitalizations;
-
 
 }

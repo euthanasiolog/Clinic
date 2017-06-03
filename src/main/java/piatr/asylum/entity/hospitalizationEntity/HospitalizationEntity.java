@@ -21,11 +21,6 @@ import java.util.Set;
 @Table(name = "hospitalization")
 public class HospitalizationEntity extends BaseEntity {
 
-    @Column
-    @Id
-    @GeneratedValue
-    long id;
-
     //дата поступления
     @Column
     LocalDateTime startHospitalization;
@@ -43,8 +38,8 @@ public class HospitalizationEntity extends BaseEntity {
             inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
     private Set<ClinicDepartmentEntity> departments;
 
-    @Column
-    @ManyToOne
+    @JoinColumn(name = "drug_list")
+    @OneToMany
     private Set<DrugEntity> drugList;
 
     public LocalDateTime getStartHospitalization() {

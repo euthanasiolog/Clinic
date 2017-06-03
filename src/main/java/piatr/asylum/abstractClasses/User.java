@@ -1,5 +1,6 @@
 package piatr.asylum.abstractClasses;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -11,7 +12,11 @@ import java.io.Serializable;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User extends Human implements Serializable{
+
+    @Column
     public String login;
+
+    @Column
     private String password;
 
     public String getLogin() {

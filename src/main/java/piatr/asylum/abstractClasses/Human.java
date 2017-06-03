@@ -11,10 +11,6 @@ import java.time.LocalDateTime;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Human extends BaseEntity implements Serializable{
     @Column
-    @Id
-    @GeneratedValue
-    public long id;
-    @Column
     public String firstName;
     @Column
     public String secondName;
@@ -22,4 +18,5 @@ public abstract class Human extends BaseEntity implements Serializable{
     public String patronymic;
     @Column
     public LocalDateTime dateOfBirth;
+
 }

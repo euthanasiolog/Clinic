@@ -3,6 +3,7 @@ package piatr.asylum.entity.clinicEntity;
 
 import piatr.asylum.abstractClasses.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -20,8 +21,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "department")
 public class ClinicDepartmentEntity extends BaseEntity {
+    @Column
+    String name;
 
-    private String name;
-    private int volumeOfDepartment;
+    @Column
+    int volumeOfDepartment;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVolumeOfDepartment() {
+        return volumeOfDepartment;
+    }
+
+    public void setVolumeOfDepartment(int volumeOfDepartment) {
+        this.volumeOfDepartment = volumeOfDepartment;
+    }
+
+
 
 }

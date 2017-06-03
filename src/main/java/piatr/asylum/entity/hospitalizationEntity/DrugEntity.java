@@ -4,9 +4,8 @@ package piatr.asylum.entity.hospitalizationEntity;
 import piatr.asylum.enumerations.DrugType;
 import piatr.asylum.enumerations.DrugUseType;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import piatr.asylum.abstractClasses.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -16,12 +15,9 @@ import java.time.LocalTime;
 /**
  * Created by piatr on 21.05.17.
  */
+@Entity
+@Table(name = "drug")
 public class DrugEntity extends BaseEntity{
-
-    @Column
-    @Id
-    @GeneratedValue
-    long id;
 
     @Column
     String name;

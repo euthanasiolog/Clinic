@@ -10,13 +10,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="asylum"/>
-    <!--<context:component-scan base-package="java.entity"/>-->
-    <!--<context:component-scan base-package="java.dao"/>-->
-    <!--<context:component-scan base-package="java.abstractClasses"/>-->
-    <!--<context:component-scan base-packajava.myControllersrslers"/>-->
-    <!--<context:component-scan base-package="java.dto"/>-->
-    <!--<context:component-scan base-package="java.service"/>-->
+    <context:component-scan base-package="piatr"/>
 
         <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -43,13 +37,13 @@
     <!--</bean>-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="asylum"/>
-        <!-- чего-то ругается((
-        <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="packagesToScan" value="piatr.asylum"/>
         <property name="hibernateProperties">
             <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
     </bean>

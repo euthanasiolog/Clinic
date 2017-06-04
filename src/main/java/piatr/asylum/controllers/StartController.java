@@ -1,4 +1,4 @@
-package piatr.asylum.myControllers;
+package piatr.asylum.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

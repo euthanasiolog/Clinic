@@ -23,10 +23,12 @@ public class HospitalizationEntity extends BaseEntity {
 
     //дата поступления
     @Column
+    private
     LocalDateTime startHospitalization;
 
     //дата выписки
     @Column
+    private
     LocalDateTime endHospitalization;
 
     //список госпитализаций. пациента могут переводить из
@@ -38,9 +40,23 @@ public class HospitalizationEntity extends BaseEntity {
             inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
     private Set<ClinicDepartmentEntity> departments;
 
+    //список лекарств(типа лист назначений)
     @JoinColumn(name = "drug_list")
     @OneToMany
     private Set<DrugEntity> drugList;
+
+    //список консультаций
+    @JoinColumn(name = "consult_list")
+    @OneToMany
+    private Set<ConsultationEntity> consultList;
+
+    public Set<ConsultationEntity> getConsultList() {
+        return consultList;
+    }
+
+    public void setConsultList(Set<ConsultationEntity> consultList) {
+        this.consultList = consultList;
+    }
 
     public LocalDateTime getStartHospitalization() {
         return startHospitalization;

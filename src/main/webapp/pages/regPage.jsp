@@ -13,14 +13,22 @@
     <title>Hi!</title>
 </head>
 <body>
+<div align="center">
 <form:form action="/reg" method="post" commandName="regForm">
-    <form:input path="login"/><br>
-    <form:input path="firstName"/><br>
-    <form:input path="secondName"/><br>
-    <form:input path="email" /><br>
-    <form:password path="password" /><br>
-    <form:password path="confirmPassword"/><br>
+    <label for="login">Введите логин:</label><br>
+    <form:input id="login" path="login"/><br><br>
+    <label for="firstName">Введите имя:</label><br>
+    <form:input id="firstName" path="firstName"/><br><br>
+    <label for="secondName">Введите фамилию:</label><br>
+    <form:input id="secondName" path="secondName"/><br><br>
+    <label for="email">Введите адрес электронной почты:</label><br>
+    <form:input id="email" path="email" /><br><br>
+    <label for="password">Введите пароль:</label><br>
+    <form:password id="password" path="password" /><br><br>
+    <label for="comfirmPassword">Подтвердите пароль:</label><br>
+    <form:password id="comfirmPassword" path="confirmPassword"/><br><br>
     <input type="submit">
 </form:form>
+</div>
 </body>
 </html>

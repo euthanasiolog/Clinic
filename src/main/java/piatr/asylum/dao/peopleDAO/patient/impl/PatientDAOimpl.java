@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by piatr on 22.05.17.
  */
 @Transactional
-@Repository("patientDAOimpl")
+@Repository("patientDAO")
 public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements PatientGenericDAO {
 }

@@ -12,9 +12,10 @@
     <title>Hi!</title>
 </head>
 <body>
+<div align="center">
     <form:form action="/signIn" method="post" commandName="signIn">
-        <form:select path="type">
-            <form:option disabled="true" value="Вы кто?"/>
+        <label for="user">Вы кто?</label>
+        <form:select path="type" id="user">
             <form:option value="doctor">Доктор</form:option>
             <form:option value="nurse">Медсестра</form:option>
         </form:select>
@@ -22,7 +23,9 @@
         <form:input path="login"/><br>
         <div>Введите пароль:</div>
         <form:password path="password"/><br>
+        <hr>
         <input type="submit">
     </form:form>
+</div>
 </body>
 </html>

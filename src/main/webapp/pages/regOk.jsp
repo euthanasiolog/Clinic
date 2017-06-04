@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<div>ну типа молодец</div>
+<div>ну типа молодец,${name}!></div>
 <form action="/regOk">
     <input name="Da!" type="submit">
 </form>

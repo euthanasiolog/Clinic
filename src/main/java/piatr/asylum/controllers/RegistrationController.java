@@ -1,6 +1,8 @@
 package piatr.asylum.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import piatr.asylum.entity.peopleEntity.users.DoctorEntity;
 import piatr.asylum.service.peopleService.doctor.DoctorService;
 import piatr.asylum.service.peopleService.doctor.impl.DoctorServiceImpl;
@@ -26,16 +28,18 @@ public class RegistrationController {
     @RequestMapping(value = "/reg", method = RequestMethod.GET)
     public String reg(ModelMap modelMap){
         RegForm regForm = new RegForm();
+        regForm.setEmail("dsdeee");
         modelMap.put("regForm", regForm);
         return "regPage";
     }
 
+
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
-    public String registration(@Valid final RegForm regForm, ModelMap modelMap, final BindingResult bindingResult) {
+    public String registration(ModelMap modelMap,@Valid final RegForm regForm,  final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "regPage";
         else if (regForm.getPassword().equals(regForm.getConfirmPassword())) {
             modelMap.addAttribute("name", regForm.getFirstName());
-            DoctorEntity doctorEntity = new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword());
+            DoctorEntity doctorEntity = new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail());
             doctorService.create(doctorEntity);
             return "regOk";
         }

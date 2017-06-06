@@ -19,6 +19,17 @@ public abstract class User extends Human implements Serializable{
     @Column
     private String password;
 
+    @Column
+    private String eMail;
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
     public String getLogin() {
         return login;
     }

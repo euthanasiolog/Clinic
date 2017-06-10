@@ -1,5 +1,7 @@
 package piatr.asylum.abstractClasses;
 
+import piatr.asylum.enumerations.Sex;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -18,5 +20,8 @@ public abstract class Human extends BaseEntity implements Serializable{
     public String patronymic;
     @Column
     public LocalDateTime dateOfBirth;
-
+    @Column
+    public Sex sex;
+    @Column
+    public String adress;
 }

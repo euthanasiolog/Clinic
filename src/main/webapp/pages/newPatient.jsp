@@ -13,7 +13,17 @@
     <title>Title</title>
 </head>
 <body>
-
+    <form:form>
+        <label for="name">Имя: </label><br>
+        <form:input id="name" path="name"/><br><br>
+        <label for="secondName">Фамилия: </label><br>
+        <form:input id="secondName" path="secondName"/><br><br>
+        <label for="patronymic">Отчество: </label><br>
+        <form:input id="patronymic" path="patronymic"/><br><br>
+        <label for="adress">Адресс: </label><br>
+        <form:input id="adress" path="adress"/><br><br>
+        <input type="submit">
+    </form:form>
 
 </body>
 </html>

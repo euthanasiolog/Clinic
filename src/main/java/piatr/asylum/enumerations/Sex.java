@@ -5,6 +5,5 @@ package piatr.asylum.enumerations;
  */
 public enum Sex {
     MALE,
-    FEMALE,
-    ALL
+    FEMALE
 }

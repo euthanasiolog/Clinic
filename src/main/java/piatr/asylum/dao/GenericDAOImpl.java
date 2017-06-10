@@ -13,16 +13,16 @@ import java.lang.reflect.Type;
 /**
  * Created by piatr on 23.05.17.
  */
-@Repository("genericDAO")
+//@Repository("genericDAO")
 @Transactional
 public class GenericDAOImpl<T extends BaseEntity> implements GenericDAO<T> {
 
-    //private final Class<T> entityClass;
+   private final Class<T> entityClass;
 
     public GenericDAOImpl() {
-//        Type type = getClass().getGenericSuperclass();
-//        ParameterizedType parameterizedType = (ParameterizedType) type;
-//        entityClass = (Class) parameterizedType.getActualTypeArguments()[0];
+        Type type = getClass().getGenericSuperclass();
+        ParameterizedType parameterizedType = (ParameterizedType) type;
+        entityClass = (Class) parameterizedType.getActualTypeArguments()[0];
 
     }
 
@@ -38,11 +38,11 @@ public class GenericDAOImpl<T extends BaseEntity> implements GenericDAO<T> {
         return entity;
     }
 
-//    @Override
-//    @Transactional(readOnly = true)
-//    public T get(long id) {
-//        return (T)getSession().get(entityClass, id);
-//    }
+    @Override
+    @Transactional(readOnly = true)
+    public T get(long id) {
+        return (T)getSession().get(entityClass, id);
+    }
 
     @Override
     @Transactional

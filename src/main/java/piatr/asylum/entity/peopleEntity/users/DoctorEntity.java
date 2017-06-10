@@ -20,4 +20,7 @@ public class DoctorEntity extends ClinicEmployee{
         super.setPassword(password);
         super.seteMail(eMail);
     }
+
+    public DoctorEntity() {
+    }
 }

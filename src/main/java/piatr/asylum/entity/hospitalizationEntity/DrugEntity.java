@@ -50,6 +50,9 @@ public class DrugEntity extends BaseEntity{
     @Column
     DrugUseType drugUseType;
 
+    public DrugEntity() {
+    }
+
     public DrugType getDrugType() {
         return drugType;
     }

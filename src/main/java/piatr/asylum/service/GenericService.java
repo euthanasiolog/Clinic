@@ -7,7 +7,7 @@ import piatr.asylum.abstractClasses.BaseEntity;
  */
 public interface GenericService<T extends BaseEntity> {
     T create(T t);
-//    T get(long id);
+    T get(long id);
     void update(T t);
     void delete(T t);
 }

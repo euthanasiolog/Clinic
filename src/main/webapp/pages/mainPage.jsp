@@ -25,7 +25,7 @@
     <c:forEach var="patient" items="${patientList}" varStatus="patientCount">
         <tr>
             <td>${patientCount}</td>
-            <%--<td>${patient}</td> тут продумать какие поля как выводить в таблицу--%>
+            <%--<td>${patientList}</td> тут продумать какие поля как выводить в таблицу--%>
         </tr>
 
     </c:forEach>

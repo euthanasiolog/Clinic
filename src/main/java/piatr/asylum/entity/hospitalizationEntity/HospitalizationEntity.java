@@ -23,13 +23,17 @@ public class HospitalizationEntity extends BaseEntity {
 
     //дата поступления
     @Column
-    private
-    LocalDateTime startHospitalization;
+    private LocalDateTime startHospitalization;
 
     //дата выписки
     @Column
-    private
-    LocalDateTime endHospitalization;
+    private LocalDateTime endHospitalization;
+
+    public HospitalizationEntity() {
+    }
+
+    //лежит ли пациент прямо сейчас
+    private boolean isHospitalizationActual = false;
 
     //список госпитализаций. пациента могут переводить из
     // отделения в отделение, поэтому многие ко многим
@@ -39,6 +43,14 @@ public class HospitalizationEntity extends BaseEntity {
     joinColumns = {@JoinColumn(name = "HOSP_ID")},
             inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
     private Set<ClinicDepartmentEntity> departments;
+
+    public boolean getIsHospitalizationActual() {
+        return isHospitalizationActual;
+    }
+
+    public void setIsHospitalizationActual(boolean hospitalizationActual) {
+        isHospitalizationActual = hospitalizationActual;
+    }
 
     //список лекарств(типа лист назначений)
     @JoinColumn(name = "drug_list")

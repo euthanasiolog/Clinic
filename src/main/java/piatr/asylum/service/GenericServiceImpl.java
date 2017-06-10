@@ -14,9 +14,8 @@ import piatr.asylum.dao.GenericDAO;
  */
 @Service("genericService")
 @Transactional
-public  class GenericServiceImpl<T extends BaseEntity> implements GenericService<T> {
+public class GenericServiceImpl<T extends BaseEntity> implements GenericService<T> {
 
-    @Autowired
     private GenericDAO<T> genericDAO;
 
     @Override
@@ -25,10 +24,10 @@ public  class GenericServiceImpl<T extends BaseEntity> implements GenericService
         return genericDAO.create(t);
     }
 
-//    @Override
-//    public T get(long id) {
-//        return genericDAO.get(id);
-//    }
+    @Override
+    public T get(long id) {
+        return genericDAO.get(id);
+    }
 
     @Override
     @Transactional
@@ -43,5 +42,10 @@ public  class GenericServiceImpl<T extends BaseEntity> implements GenericService
     }
 
     public GenericServiceImpl() {
+    }
+
+    protected void setGenericDAO(GenericDAO<T> genericDAO)
+    {
+        this.genericDAO = genericDAO;
     }
 }

@@ -19,7 +19,40 @@ import java.util.Set;
 public class PatientEntity extends Human {
 
     @Column
+    private String lastDepartment;
+
+    public String getLastDepartment() {
+        return lastDepartment;
+    }
+
+    @Column
+    private boolean isInClinicNow;
+
+    public boolean getIsInClinicNow() {
+        return isInClinicNow;
+    }
+
+    public void setInClinicNow(boolean inClinicNow) {
+        isInClinicNow = inClinicNow;
+    }
+
+    public void setLastDepartment(String lastDepartment) {
+        this.lastDepartment = lastDepartment;
+    }
+
+    @JoinColumn(name = "patient_hospitalization")
     @OneToMany
     private Set<HospitalizationEntity> hospitalizations;
 
+    public Set<HospitalizationEntity> getHospitalizations() {
+        return hospitalizations;
+    }
+
+    public void setHospitalizations(Set<HospitalizationEntity> hospitalizations) {
+        this.hospitalizations = hospitalizations;
+    }
+
+    public void addHospitalization(HospitalizationEntity hospitalization){
+        hospitalizations.add(hospitalization);
+    }
 }

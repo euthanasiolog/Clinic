@@ -1,7 +1,9 @@
 package piatr.asylum.service.peopleService.doctor.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import piatr.asylum.dao.GenericDAO;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.entity.peopleEntity.users.DoctorEntity;
 import piatr.asylum.service.peopleService.doctor.DoctorService;
@@ -12,4 +14,9 @@ import piatr.asylum.service.peopleService.doctor.DoctorService;
 @Service("doctorService")
 @Transactional
 public class DoctorServiceImpl extends GenericServiceImpl<DoctorEntity> implements DoctorService{
+    @Override
+    @Autowired
+    protected void setGenericDAO(GenericDAO<DoctorEntity> genericDAO){
+        super.setGenericDAO(genericDAO);
+    }
 }

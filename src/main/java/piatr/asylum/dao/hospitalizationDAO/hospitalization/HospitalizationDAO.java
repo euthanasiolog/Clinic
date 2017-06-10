@@ -9,5 +9,5 @@ import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
  * Created by piatr on 23.05.17.
  */
 public interface HospitalizationDAO extends GenericDAO<HospitalizationEntity> {
-    public void addDepartment(ClinicDepartmentEntity department, HospitalizationEntity hospitalization);
+    void addDepartment(ClinicDepartmentEntity department, HospitalizationEntity hospitalization);
 }

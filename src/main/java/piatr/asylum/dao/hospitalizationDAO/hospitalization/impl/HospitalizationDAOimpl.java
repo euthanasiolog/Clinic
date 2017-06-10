@@ -27,7 +27,6 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         } else {
             Set<ClinicDepartmentEntity> departmentEntities = new TreeSet<>();
             departmentEntities.add(department);
-
         }
     }
 }

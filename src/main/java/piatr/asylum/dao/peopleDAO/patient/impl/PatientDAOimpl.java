@@ -13,6 +13,7 @@ import piatr.asylum.entity.peopleEntity.PatientEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -24,11 +25,11 @@ import java.util.Set;
 @Repository("patientDAO")
 public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements PatientGenericDAO {
 
-    @Autowired
-    private HospitalizationDAOimpl hospitalizationDAOimpl;
+//    @Resource(name = "hospitalizationDAO")
+//    private HospitalizationDAOimpl hospitalizationDAOimpl;
 
-    @Autowired
-    private PatientDAOimpl patientDAO;
+//    @Autowired
+//    private PatientDAOimpl patientDAO;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -37,8 +38,8 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
     public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, ClinicDepartmentEntity department) {
         HospitalizationEntity hospitalizationEntity = new HospitalizationEntity();
         hospitalizationEntity.setStartHospitalization(startTime);
-        patient.addHospitalization(hospitalizationDAOimpl.create(hospitalizationEntity));
-        hospitalizationEntity.setIsHospitalizationActual(true);
+//        patient.addHospitalization(hospitalizationDAOimpl.create(hospitalizationEntity));
+//        hospitalizationEntity.setIsHospitalizationActual(true);
         patient.setInClinicNow(true);
         patient.setLastDepartment(department.getName());
     }
@@ -57,9 +58,9 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
 
     @Override
     public void hospitalizationEnd(PatientEntity patient, LocalDateTime endTime) {
-           HospitalizationEntity hospitalization = patientDAO.getCurrentHospitalization(patient);
-           hospitalization.setEndHospitalization(endTime);
-           hospitalization.setIsHospitalizationActual(false);
+//           HospitalizationEntity hospitalization = patientDAO.getCurrentHospitalization(patient);
+//           hospitalization.setEndHospitalization(endTime);
+//           hospitalization.setIsHospitalizationActual(false);
            patient.setInClinicNow(false);
     }
 

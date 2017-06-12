@@ -5,6 +5,7 @@ package piatr.asylum.entity.hospitalizationEntity;
 
 import piatr.asylum.abstractClasses.BaseEntity;
 import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,9 +30,6 @@ public class HospitalizationEntity extends BaseEntity {
     @Column
     private LocalDateTime endHospitalization;
 
-    public HospitalizationEntity() {
-    }
-
     //лежит ли пациент прямо сейчас
     private boolean isHospitalizationActual = false;
 
@@ -44,14 +42,6 @@ public class HospitalizationEntity extends BaseEntity {
             inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
     private Set<ClinicDepartmentEntity> departments;
 
-    public boolean getIsHospitalizationActual() {
-        return isHospitalizationActual;
-    }
-
-    public void setIsHospitalizationActual(boolean hospitalizationActual) {
-        isHospitalizationActual = hospitalizationActual;
-    }
-
     //список лекарств(типа лист назначений)
     @JoinColumn(name = "drug_list")
     @OneToMany
@@ -61,6 +51,35 @@ public class HospitalizationEntity extends BaseEntity {
     @JoinColumn(name = "consult_list")
     @OneToMany
     private Set<ConsultationEntity> consultList;
+
+    //список отметок отделений. что бы можно было посмотреть, с какого по какое время
+    //и в каком отделении в течение данной госпитализации находился пациент. Изначально для этого задумывался
+    //просто список отделений, но вышла неувязка - время поступления и время убытия не относятся к отделению,
+    // это относится к пациенту, делать такие поля в классе отделения нелогично, да и в одном отделении пациент
+    //может быть более одного раза, поэтому я создал класс-костыль, в нем как раз имя отделения и время
+    // нахождения в нем. По имени отделения можно найти само отделение, и посмотреть информацию о нём.
+    // Зачем тогда список отделений, который выше, я не знаю, но пусть пока будет) никогда не знаешь, что тебе
+    // может понадобиться вскоре, когда я начинал этот проект, и в мыслях не было такой структуры, мне это казалось
+    // примитивнейшей вещью...
+    @JoinColumn(name = "department_stamps")
+    @OneToMany
+    private Set<DepartmentStamp> departmentStamps;
+
+    public Set<DepartmentStamp> getDepartmentStamps() {
+        return departmentStamps;
+    }
+
+    public void setDepartmentStamps(Set<DepartmentStamp> departmentStamps) {
+        this.departmentStamps = departmentStamps;
+    }
+
+    public boolean getIsHospitalizationActual() {
+        return isHospitalizationActual;
+    }
+
+    public void setIsHospitalizationActual(boolean hospitalizationActual) {
+        isHospitalizationActual = hospitalizationActual;
+    }
 
     public Set<ConsultationEntity> getConsultList() {
         return consultList;

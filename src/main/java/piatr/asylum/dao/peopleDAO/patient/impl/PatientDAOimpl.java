@@ -1,4 +1,4 @@
-package piatr.asylum.dao.peopleDAO.patient.impl;
+ package piatr.asylum.dao.peopleDAO.patient.impl;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

@@ -4,7 +4,7 @@ package piatr.asylum.entity.hospitalizationEntity;
 
 
 import piatr.asylum.abstractClasses.BaseEntity;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 
 import javax.persistence.*;
@@ -40,7 +40,7 @@ public class HospitalizationEntity extends BaseEntity {
     @JoinTable(name = "HOSP_DEP",
     joinColumns = {@JoinColumn(name = "HOSP_ID")},
             inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
-    private Set<ClinicDepartmentEntity> departments;
+    private Set<DepartmentEntity> departments;
 
     //список лекарств(типа лист назначений)
     @JoinColumn(name = "drug_list")
@@ -105,11 +105,11 @@ public class HospitalizationEntity extends BaseEntity {
         this.endHospitalization = endHospitalization;
     }
 
-    public Set<ClinicDepartmentEntity> getDepartments() {
+    public Set<DepartmentEntity> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(Set<ClinicDepartmentEntity> departments) {
+    public void setDepartments(Set<DepartmentEntity> departments) {
         this.departments = departments;
     }
 

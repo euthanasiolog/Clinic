@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAOImpl;
-import piatr.asylum.dao.clinicDAO.department.ClinicDepartmentDAO;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import java.util.List;
@@ -17,14 +17,14 @@ import java.util.List;
  */
 @Repository("departmentDAO")
 @Transactional
-public class ClinicDepartmentDAOimpl extends GenericDAOImpl<ClinicDepartmentEntity> implements ClinicDepartmentDAO {
+public class DepartmentDAOimpl extends GenericDAOImpl<DepartmentEntity> implements DepartmentDAO {
 
     @Autowired
     private
     SessionFactory sessionFactory;
 
     @Override
-    public List<PatientEntity> getCurrentPatients(ClinicDepartmentEntity department) {
+    public List<PatientEntity> getCurrentPatients(DepartmentEntity department) {
         String departmentName = department.getName();
         String patientsHSQL = "FROM PatientEntity WHERE isInClinicNow = true AND lastDepartment = :departmentName";
         Query query = sessionFactory.getCurrentSession().createQuery(patientsHSQL);

@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAO;
-import piatr.asylum.dao.clinicDAO.department.impl.ClinicDepartmentDAOimpl;
+import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
+import piatr.asylum.dao.clinicDAO.department.impl.DepartmentDAOimpl;
 import piatr.asylum.service.GenericServiceImpl;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.service.clinicService.department.DepartmentService;
 
 import java.util.List;
@@ -16,18 +17,18 @@ import java.util.List;
  */
 @Service("departmentService")
 @Transactional
-public class DepartmentServiceImpl extends GenericServiceImpl<ClinicDepartmentEntity> implements DepartmentService{
+public class DepartmentServiceImpl extends GenericServiceImpl<DepartmentEntity> implements DepartmentService{
     @Autowired
-    private ClinicDepartmentDAOimpl clinicDepartmentDAO;
+    private DepartmentDAO departmentDAO;
 
     @Override
     @Autowired
-    protected void setGenericDAO(GenericDAO<ClinicDepartmentEntity> genericDAO){
+    protected void setGenericDAO(GenericDAO<DepartmentEntity> genericDAO){
         super.setGenericDAO(genericDAO);
     }
 
     @Override
-    public List getCurrentPatients(ClinicDepartmentEntity department) {
-        return clinicDepartmentDAO.getCurrentPatients(department);
+    public List getCurrentPatients(DepartmentEntity department) {
+        return departmentDAO.getCurrentPatients(department);
     }
 }

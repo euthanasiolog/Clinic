@@ -4,12 +4,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.GenericDAOImpl;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -21,11 +20,11 @@ import java.util.TreeSet;
 public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity> implements HospitalizationDAO {
 
     @Override
-    public void addDepartment(ClinicDepartmentEntity department, HospitalizationEntity hospitalization) {
+    public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
         if (hospitalization.getDepartments()!=null){
         hospitalization.getDepartments().add(department);
         } else {
-            Set<ClinicDepartmentEntity> departmentEntities = new TreeSet<>();
+            Set<DepartmentEntity> departmentEntities = new TreeSet<>();
             departmentEntities.add(department);
         }
     }
@@ -46,7 +45,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
 
     @Override
     public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime,
-                                 ClinicDepartmentEntity department) {
+                                 DepartmentEntity department) {
         TreeSet<DepartmentStamp> departmentStamps = new TreeSet<>(hospitalizationEntity.getDepartmentStamps());
         departmentStamps.last().setToTime(dateTime);
         addDepartmentStamp(hospitalizationEntity, department.getName(), dateTime);

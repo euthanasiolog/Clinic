@@ -16,8 +16,8 @@
     <form:form action="/signIn" method="post" commandName="signIn">
         <label for="user">Вы кто?</label>
         <form:select path="type" id="user">
-            <form:option value="doctor">Доктор</form:option>
-            <form:option value="nurse">Медсестра</form:option>
+            <form:option value="DoctorEntity">Доктор</form:option>
+            <form:option value="NurseEntity">Медсестра</form:option>
         </form:select>
         <div>Введите логин:</div>
         <form:input path="login"/><br>

@@ -39,8 +39,8 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) return "regPage";
         else if (regForm.getPassword().equals(regForm.getConfirmPassword())) {
             modelMap.addAttribute("name", regForm.getFirstName());
-            DoctorEntity doctorEntity = new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail());
-            doctorService.create(doctorEntity);
+            //DoctorEntity doctorEntity = new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail());
+            doctorService.create(new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail()));
             return "regOk";
         }
         return "regPage";

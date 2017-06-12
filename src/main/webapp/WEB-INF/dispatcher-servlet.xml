@@ -14,7 +14,14 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="piatr"/>
+    <context:component-scan base-package="piatr.asylum.service"/>
+    <context:component-scan base-package="piatr.asylum.controllers"/>
+    <context:component-scan base-package="piatr.asylum.dao"/>
+    <context:component-scan base-package="piatr.asylum.entity"/>
+    <context:component-scan base-package="piatr.asylum.abstractClasses"/>
+    <context:component-scan base-package="piatr.asylum.forms"/>
+    <context:component-scan base-package="piatr.asylum.enumerations"/>
+
     <tx:annotation-driven/>
 
         <mvc:annotation-driven/>

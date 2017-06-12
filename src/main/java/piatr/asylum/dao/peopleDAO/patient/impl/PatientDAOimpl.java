@@ -5,7 +5,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.dao.peopleDAO.patient.PatientDAO;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
@@ -25,7 +25,7 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
     private SessionFactory sessionFactory;
 
     @Override
-    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, ClinicDepartmentEntity department) {
+    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity department) {
         HospitalizationEntity hospitalizationEntity = new HospitalizationEntity();
         hospitalizationEntity.setStartHospitalization(startTime);
         patient.addHospitalization(hospitalizationEntity);

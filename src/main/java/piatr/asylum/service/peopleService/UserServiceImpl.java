@@ -1,10 +1,8 @@
 package piatr.asylum.service.peopleService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import piatr.asylum.dao.GenericDAO;
-import piatr.asylum.dao.peopleDAO.UserDAOimpl;
+import piatr.asylum.dao.UserDAO;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.abstractClasses.User;
 
@@ -13,19 +11,49 @@ import piatr.asylum.abstractClasses.User;
  */
 @Service("userService")
 @Transactional
-public abstract class UserServiceImpl extends GenericServiceImpl<User> implements UserService {
-    @Autowired
-    private
-    UserDAOimpl userDAO;
+public class UserServiceImpl<T extends User> extends GenericServiceImpl<T> implements UserService<T> {
+//    @Autowired
+//    private
+//    UserDAOimpl userDAO;
 
-    @Override
-    protected void setGenericDAO(GenericDAO<User> genericDAO)
-    {
-       super.setGenericDAO(genericDAO);
-    }
+    private UserDAO<T> userDAO;
 
     @Override
     public User getUserByLogin(String login, String userType) {
         return userDAO.getUserByLogin(login, userType);
+    }
+
+    @Override
+    public boolean isLoginExist(String login, String userType){
+        return userDAO.isLoginExist(login, userType);
+    }
+
+    @Override
+    public boolean isPasswordCorrect(String login, String password, String userType) {
+        return userDAO.isPasswordCorrect(login, password, userType);
+    }
+    public void setUserDAO(UserDAO<T> userDAO)
+    {
+        this.userDAO = userDAO;
+    }
+
+    @Override
+    public T create(T t) {
+        return userDAO.create(t);
+    }
+
+    @Override
+    public T get(long id) {
+        return userDAO.get(id);
+    }
+
+    @Override
+    public void update(T t) {
+        userDAO.update(t);
+    }
+
+    @Override
+    public void delete(T t) {
+        userDAO.delete(t);
     }
 }

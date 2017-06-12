@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAO;
+import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.impl.HospitalizationDAOimpl;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.service.hospitalizationService.hospitalization.HospitalizationService;
@@ -19,7 +20,8 @@ import java.time.LocalDateTime;
 @Transactional
 public class HospitalizationServiceImpl extends GenericServiceImpl<HospitalizationEntity> implements HospitalizationService{
     @Autowired
-    HospitalizationDAOimpl hospitalizationDAO;
+    private
+    HospitalizationDAO hospitalizationDAO;
 
     @Autowired
     @Override
@@ -28,7 +30,7 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     }
 
     @Override
-    public void addDepartment(ClinicDepartmentEntity department, HospitalizationEntity hospitalization) {
+    public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
         hospitalizationDAO.addDepartment(department, hospitalization);
     }
 
@@ -38,7 +40,7 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     }
 
     @Override
-    public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime, ClinicDepartmentEntity department) {
+    public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime, DepartmentEntity department) {
         hospitalizationDAO.changeDepartment(hospitalizationEntity, dateTime, department);
     }
 }

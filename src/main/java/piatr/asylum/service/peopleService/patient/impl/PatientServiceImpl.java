@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAO;
+import piatr.asylum.dao.peopleDAO.patient.PatientDAO;
 import piatr.asylum.dao.peopleDAO.patient.impl.PatientDAOimpl;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 import piatr.asylum.service.GenericServiceImpl;
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
 @Transactional
 public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implements PatientService {
     @Autowired
-    PatientDAOimpl patientDAO;
+    PatientDAO patientDAO;
 
     @Override
     @Autowired
@@ -29,7 +30,7 @@ public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implem
     }
 
     @Override
-    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, ClinicDepartmentEntity clinicDepartment) {
+    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity clinicDepartment) {
         patientDAO.hospitalizationStart(patient, startTime, clinicDepartment);
     }
 

@@ -4,6 +4,7 @@ package piatr.asylum.entity.peopleEntity.users;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import piatr.asylum.abstractClasses.ClinicEmployee;
+import piatr.asylum.abstractClasses.User;
 
 /**
  * Created by piatr on 16.05.17.

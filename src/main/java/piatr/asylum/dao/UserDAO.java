@@ -1,4 +1,4 @@
-package piatr.asylum.dao.peopleDAO;
+package piatr.asylum.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,6 +11,8 @@ import piatr.asylum.dao.GenericDAO;
  * Created by piatr on 06.06.17.
  */
 
-public interface UserDAO extends GenericDAO<User>{
+public interface UserDAO<T extends User> extends GenericDAO<T>{
     public User getUserByLogin(String login, String userType);
+    public boolean isLoginExist(String login, String userType);
+    public boolean isPasswordCorrect(String login, String password, String userType);
 }

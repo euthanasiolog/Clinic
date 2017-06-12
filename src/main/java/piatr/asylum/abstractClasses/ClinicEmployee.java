@@ -5,8 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
-import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 
 import java.io.Serializable;
 
@@ -17,5 +16,5 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ClinicEmployee extends User implements Serializable{
     @Column
-    public ClinicDepartmentEntity department;
+    public DepartmentEntity department;
 }

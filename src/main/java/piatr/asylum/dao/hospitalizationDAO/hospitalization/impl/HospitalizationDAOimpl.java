@@ -5,8 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
+import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -21,12 +23,35 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     @Override
     public void addDepartment(ClinicDepartmentEntity department, HospitalizationEntity hospitalization) {
         if (hospitalization.getDepartments()!=null){
-        Set<ClinicDepartmentEntity> departmentEntities = hospitalization.getDepartments();
-        departmentEntities.add(department);
-
+        hospitalization.getDepartments().add(department);
         } else {
             Set<ClinicDepartmentEntity> departmentEntities = new TreeSet<>();
             departmentEntities.add(department);
         }
     }
+
+    @Override
+    public void addDepartmentStamp(HospitalizationEntity hospitalization, String departmentName, LocalDateTime fromTime) {
+        DepartmentStamp departmentStamp = new DepartmentStamp();
+        departmentStamp.setDepartmentName(departmentName);
+        departmentStamp.setFromTime(fromTime);
+        if (hospitalization.getDepartmentStamps()!=null){
+            hospitalization.getDepartmentStamps().add(departmentStamp);
+        }else {
+            Set<DepartmentStamp> departmentStamps = new TreeSet<>();
+            departmentStamps.add(departmentStamp);
+
+        }
+    }
+
+    @Override
+    public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime,
+                                 ClinicDepartmentEntity department) {
+        TreeSet<DepartmentStamp> departmentStamps = new TreeSet<>(hospitalizationEntity.getDepartmentStamps());
+        departmentStamps.last().setToTime(dateTime);
+        addDepartmentStamp(hospitalizationEntity, department.getName(), dateTime);
+        hospitalizationEntity.getDepartments().add(department);
+    }
+
+
 }

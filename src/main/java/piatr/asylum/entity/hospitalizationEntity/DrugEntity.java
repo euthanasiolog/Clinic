@@ -20,10 +20,12 @@ import java.time.LocalTime;
 public class DrugEntity extends BaseEntity{
 
     @Column
+    private
     String name;
 
     //доза лекарства в граммах или миллиграммах
     @Column
+    private
     double dose;
 
     //доза лекарства в количестве таблеток(или других форм)

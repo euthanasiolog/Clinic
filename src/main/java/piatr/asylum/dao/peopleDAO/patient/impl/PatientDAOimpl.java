@@ -4,8 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import piatr.asylum.dao.GenericDAOImpl;
-import piatr.asylum.dao.hospitalizationDAO.hospitalization.impl.HospitalizationDAOimpl;
-import piatr.asylum.dao.peopleDAO.patient.PatientGenericDAO;
+import piatr.asylum.dao.peopleDAO.patient.PatientDAO;
 import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
@@ -13,17 +12,14 @@ import piatr.asylum.entity.peopleEntity.PatientEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
 
-/**
+ /**
  * Created by piatr on 22.05.17.
  */
 @Transactional
 @Repository("patientDAO")
-public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements PatientGenericDAO {
+public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements PatientDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

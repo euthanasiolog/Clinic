@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * Created by piatr on 23.05.17.
  */
 
-public interface PatientGenericDAO extends GenericDAO<PatientEntity> {
+public interface PatientDAO extends GenericDAO<PatientEntity> {
     public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, ClinicDepartmentEntity clinicDepartment);
     public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime);
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);

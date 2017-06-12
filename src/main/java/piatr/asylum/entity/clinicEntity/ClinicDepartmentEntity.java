@@ -22,9 +22,11 @@ import javax.persistence.Table;
 @Table(name = "department")
 public class ClinicDepartmentEntity extends BaseEntity {
     @Column
+    private
     String name;
 
     @Column
+    private
     int volumeOfDepartment;
 
     public String getName() {

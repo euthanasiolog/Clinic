@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAOImpl;
-import piatr.asylum.dao.clinicDAO.department.ClinicDepartmentGenericDAO;
+import piatr.asylum.dao.clinicDAO.department.ClinicDepartmentDAO;
 import piatr.asylum.entity.clinicEntity.ClinicDepartmentEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Repository("departmentDAO")
 @Transactional
-public class ClinicDepartmentDAOimpl extends GenericDAOImpl<ClinicDepartmentEntity> implements ClinicDepartmentGenericDAO {
+public class ClinicDepartmentDAOimpl extends GenericDAOImpl<ClinicDepartmentEntity> implements ClinicDepartmentDAO {
 
     @Autowired
     private

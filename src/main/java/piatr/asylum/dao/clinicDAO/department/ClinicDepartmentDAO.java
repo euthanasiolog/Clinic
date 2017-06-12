@@ -8,6 +8,6 @@ import java.util.List;
 /**
  * Created by piatr on 23.05.17.
  */
-public interface ClinicDepartmentGenericDAO extends GenericDAO<ClinicDepartmentEntity> {
+public interface ClinicDepartmentDAO extends GenericDAO<ClinicDepartmentEntity> {
     public List getCurrentPatients(ClinicDepartmentEntity department);
 }

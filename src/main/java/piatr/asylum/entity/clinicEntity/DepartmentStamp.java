@@ -16,10 +16,10 @@ public class DepartmentStamp extends BaseEntity
     private String departmentName;
 
     @Column
-    private LocalDateTime from;
+    private LocalDateTime fromTime;
 
     @Column
-    private LocalDateTime to;
+    private LocalDateTime toTime;
 
     public String getDepartmentName() {
         return departmentName;
@@ -29,19 +29,19 @@ public class DepartmentStamp extends BaseEntity
         this.departmentName = departmentName;
     }
 
-    public LocalDateTime getFrom() {
-        return from;
+    public LocalDateTime getFromTime() {
+        return fromTime;
     }
 
-    public void setFrom(LocalDateTime from) {
-        this.from = from;
+    public void setFromTime(LocalDateTime from) {
+        this.fromTime = from;
     }
 
-    public LocalDateTime getTo() {
-        return to;
+    public LocalDateTime getToTime() {
+        return toTime;
     }
 
-    public void setTo(LocalDateTime to) {
-        this.to = to;
+    public void setToTime(LocalDateTime toTime) {
+        this.toTime = toTime;
     }
 }

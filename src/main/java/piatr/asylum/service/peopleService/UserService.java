@@ -7,5 +7,5 @@ import piatr.asylum.service.GenericService;
  * Created by piatr on 31.05.17.
  */
 public interface UserService extends GenericService<User> {
-    public User getUserByLogin(String login);
+    public User getUserByLogin(String login, String type);
 }

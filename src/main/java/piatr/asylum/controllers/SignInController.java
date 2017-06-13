@@ -16,6 +16,7 @@ import piatr.asylum.service.peopleService.UserServiceImpl;
 @Controller
 public class SignInController {
     @Autowired
+    private
     UserService userService;
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
@@ -26,8 +27,7 @@ public class SignInController {
     }
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public String signIn(ModelMap modelMap, SignIn signIn){
-        if(userService.isLoginExist(signIn.getLogin(), signIn.getType())&&userService.isPasswordCorrect
-                (signIn.getLogin(), signIn.getPassword(),signIn.getType()))
+        if(userService.isLoginExist(signIn.getLogin(), signIn.getType())&&userService.isPasswordCorrect(signIn.getLogin(), signIn.getPassword(),signIn.getType()))
         return "mainPage";
         else return "signInPage";
     }

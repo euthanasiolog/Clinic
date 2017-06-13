@@ -37,12 +37,7 @@ public class UserDAOimpl<T extends User> extends GenericDAOImpl<T> implements Us
     }
     @Override
     public boolean isLoginExist(String login, String userType){
-        String loginHQL = "FROM :userType WHERE login = :login";
-        Query query = sessionFactory.getCurrentSession().createQuery(loginHQL);
-        query.setParameter("login", login);
-        query.setParameter("userType", userType);
-        List users = query.list();
-        return users.size() > 0;
+        return  getUserByLogin(login, userType)!=null;
     }
 
     @Override

@@ -37,6 +37,7 @@ public class UserServiceImpl<T extends User> extends GenericServiceImpl<T> imple
     public boolean isPasswordCorrect(String login, String password, String userType) {
         return userDAO.isPasswordCorrect(login, password, userType);
     }
+
     public void setUserDAO(UserDAO<T> userDAO)
     {
         this.userDAO = userDAO;

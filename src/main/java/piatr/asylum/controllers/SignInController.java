@@ -1,6 +1,7 @@
 package piatr.asylum.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,14 @@ import piatr.asylum.service.peopleService.UserServiceImpl;
 @Controller
 public class SignInController {
     @Autowired
+    @Qualifier("doctorService")
     private
-    UserService userService;
+    UserService doctorService;
+
+    @Autowired
+    @Qualifier("nurseService")
+    private
+    UserService nurseService;
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public String signInStart(ModelMap modelMap){
@@ -25,10 +32,21 @@ public class SignInController {
         modelMap.put("signIn", signIn);
         return "signInPage";
     }
+
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public String signIn(ModelMap modelMap, SignIn signIn){
-        if(userService.isLoginExist(signIn.getLogin(), signIn.getType())&&userService.isPasswordCorrect(signIn.getLogin(), signIn.getPassword(),signIn.getType()))
-        return "mainPage";
-        else return "signInPage";
+        switch (signIn.getType()){
+            case "DoctorEntity": {
+                if(doctorService.isPasswordCorrect(signIn.getLogin(), signIn.getPassword(), signIn.getType()))
+                    return "mainDoctorPage";
+                else return "signInPage";
+            }
+            case "NurseEntity": {
+                if (nurseService.isPasswordCorrect(signIn.getLogin(),signIn.getPassword(),signIn.getType()))
+                    return "mainNursePage";
+                else return "signInPage";
+            }
+            default: return "signInPage";
+        }
     }
 }

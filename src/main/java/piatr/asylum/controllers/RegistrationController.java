@@ -1,11 +1,8 @@
 package piatr.asylum.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import piatr.asylum.entity.peopleEntity.users.DoctorEntity;
 import piatr.asylum.service.peopleService.doctor.DoctorService;
-import piatr.asylum.service.peopleService.doctor.impl.DoctorServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -47,6 +44,6 @@ public class RegistrationController {
     }
     @RequestMapping(value = "/regOk")
     public String regOk(){
-        return "mainPage";
+        return "mainDoctorPage";
     }
 }

@@ -3,6 +3,7 @@ package piatr.asylum.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.abstractClasses.User;
@@ -29,12 +30,25 @@ public class UserDAOimpl<T extends User> extends GenericDAOImpl<T> implements Us
 
     @Override
     public User getUserByLogin(String login, String userType) {
-        String doctorHQL = "FROM :userType WHERE login = :login";
-        Query query = sessionFactory.getCurrentSession().createQuery(doctorHQL);
-        query.setParameter("login", login);
-        query.setParameter("userType", userType);
-        return (User) query.uniqueResult();
+        String userHQL;
+        switch (userType) {
+            case "DoctorEntity": {
+                userHQL = "FROM DoctorEntity WHERE login = :login";
+                Query query = sessionFactory.getCurrentSession().createQuery(userHQL);
+                query.setParameter("login", login);
+                return (User) query.uniqueResult();
+            }
+            case "NurseEntity": {
+                userHQL = "FROM NurseEntity WHERE login = :login";
+                Query query = sessionFactory.getCurrentSession().createQuery(userHQL);
+                query.setParameter("login", login);
+                return (User) query.uniqueResult();
+            }
+            default:
+                return null;
+        }
     }
+
     @Override
     public boolean isLoginExist(String login, String userType){
         return  getUserByLogin(login, userType)!=null;

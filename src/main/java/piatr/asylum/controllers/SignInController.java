@@ -38,6 +38,7 @@ public class SignInController {
         switch (signIn.getType()){
             case "DoctorEntity": {
                 if(doctorService.isPasswordCorrect(signIn.getLogin(), signIn.getPassword(), signIn.getType()))
+
                     return "mainDoctorPage";
                 else return "signInPage";
             }

@@ -10,6 +10,7 @@ import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,5 +32,25 @@ public class DepartmentDAOimpl extends GenericDAOImpl<DepartmentEntity> implemen
         query.setParameter("departmentName", departmentName);
         List patients = query.list();
         return patients;
+    }
+
+    @Override
+    public DepartmentEntity getDepartmentByName(String departmentName) {
+        String depHQL = "FROM DepartmentEntity WHERE name = :name";
+        Query query = sessionFactory.getCurrentSession().createQuery(depHQL);
+        query.setParameter("name", departmentName);
+        return (DepartmentEntity) query.uniqueResult();
+    }
+
+    @Override
+    public List<DepartmentEntity> getAllDepartments() {
+        String depsHQL = "FROM DepartmentEntity";
+        Query query = sessionFactory.getCurrentSession().createQuery(depsHQL);
+        return  query.list();
+    }
+
+    @Override
+    public List<DepartmentEntity> getUserDepartments(String login) {
+        return null;
     }
 }

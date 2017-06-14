@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 @Transactional
 public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implements PatientService {
     @Autowired
+    private
     PatientDAO patientDAO;
 
     @Override
@@ -29,15 +30,6 @@ public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implem
         super.setGenericDAO(genericDAO);
     }
 
-    @Override
-    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity clinicDepartment) {
-        patientDAO.hospitalizationStart(patient, startTime, clinicDepartment);
-    }
-
-    @Override
-    public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime) {
-        patientDAO.hospitalizationEnd(patient, localDateTime);
-    }
 
     @Override
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient) {

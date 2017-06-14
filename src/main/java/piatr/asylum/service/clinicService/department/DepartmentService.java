@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface DepartmentService extends GenericService<DepartmentEntity> {
     public List getCurrentPatients(DepartmentEntity department);
+    public DepartmentEntity getDepartmentByName(String departmentName);
+    public List<DepartmentEntity> getAllDepartments();
 }

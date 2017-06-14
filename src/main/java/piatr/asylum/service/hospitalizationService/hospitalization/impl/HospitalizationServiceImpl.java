@@ -8,6 +8,7 @@ import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.impl.HospitalizationDAOimpl;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
+import piatr.asylum.entity.peopleEntity.PatientEntity;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.service.hospitalizationService.hospitalization.HospitalizationService;
 
@@ -42,5 +43,15 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     @Override
     public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime, DepartmentEntity department) {
         hospitalizationDAO.changeDepartment(hospitalizationEntity, dateTime, department);
+    }
+
+    @Override
+    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity clinicDepartment) {
+        hospitalizationDAO.hospitalizationStart(patient, startTime, clinicDepartment);
+    }
+
+    @Override
+    public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime) {
+        hospitalizationDAO.hospitalizationEnd(patient, localDateTime);
     }
 }

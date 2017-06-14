@@ -7,6 +7,7 @@ import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
+import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -20,6 +21,18 @@ import java.util.TreeSet;
 public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity> implements HospitalizationDAO {
 
     @Override
+    public DepartmentStamp getLastDepartmentStamp(HospitalizationEntity hospitalization) {
+        TreeSet<DepartmentStamp> departmentStamps = new TreeSet<>(hospitalization.getDepartmentStamps());
+        return departmentStamps.last();
+    }
+
+    @Override
+    public HospitalizationEntity getLastHospitalization(PatientEntity patient) {
+        TreeSet<HospitalizationEntity> hospitalizationEntities = new TreeSet<>(patient.getHospitalizations());
+        return hospitalizationEntities.last();
+    }
+
+    @Override
     public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
         if (hospitalization.getDepartments()!=null){
         hospitalization.getDepartments().add(department);
@@ -30,7 +43,8 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     }
 
     @Override
-    public void addDepartmentStamp(HospitalizationEntity hospitalization, String departmentName, LocalDateTime fromTime) {
+    public void addDepartmentStamp(HospitalizationEntity hospitalization, String departmentName,
+                                   LocalDateTime fromTime) {
         DepartmentStamp departmentStamp = new DepartmentStamp();
         departmentStamp.setDepartmentName(departmentName);
         departmentStamp.setFromTime(fromTime);
@@ -39,18 +53,36 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         }else {
             Set<DepartmentStamp> departmentStamps = new TreeSet<>();
             departmentStamps.add(departmentStamp);
-
-        }
+         }
     }
 
     @Override
     public void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime,
                                  DepartmentEntity department) {
-        TreeSet<DepartmentStamp> departmentStamps = new TreeSet<>(hospitalizationEntity.getDepartmentStamps());
-        departmentStamps.last().setToTime(dateTime);
+        getLastDepartmentStamp(hospitalizationEntity).setToTime(dateTime);
         addDepartmentStamp(hospitalizationEntity, department.getName(), dateTime);
         hospitalizationEntity.getDepartments().add(department);
     }
 
+    @Override
+    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity department) {
+        HospitalizationEntity hospitalizationEntity = new HospitalizationEntity();
+        hospitalizationEntity.setStartHospitalization(startTime);
+        patient.addHospitalization(hospitalizationEntity);
+        hospitalizationEntity.setIsHospitalizationActual(true);
+        patient.setInClinicNow(true);
+        addDepartmentStamp(hospitalizationEntity, department.getName(), startTime);
+        patient.setLastDepartment(department.getName());
+    }
 
+    @Override
+    public void hospitalizationEnd(PatientEntity patient,
+                                   LocalDateTime endTime) {
+        HospitalizationEntity hospitalization = getLastHospitalization(patient);
+        hospitalization.setEndHospitalization(endTime);
+        getLastDepartmentStamp(hospitalization).setToTime(endTime);
+        hospitalization.setIsHospitalizationActual(false);
+        patient.setInClinicNow(false);
+        patient.setLastDepartment(getLastDepartmentStamp(hospitalization).getDepartmentName());
+    }
 }

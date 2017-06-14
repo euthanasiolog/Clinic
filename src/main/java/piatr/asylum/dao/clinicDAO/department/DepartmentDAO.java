@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface DepartmentDAO extends GenericDAO<DepartmentEntity> {
     public List getCurrentPatients(DepartmentEntity department);
+    public DepartmentEntity getDepartmentByName(String departmentName);
+    public List<DepartmentEntity> getAllDepartments();
+    public List<DepartmentEntity> getUserDepartments(String login);
 }

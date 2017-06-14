@@ -11,7 +11,5 @@ import java.time.LocalDateTime;
  * Created by piatr on 26.05.17.
  */
 public interface PatientService extends GenericService<PatientEntity>{
-    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity clinicDepartment);
-    public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime);
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
 }

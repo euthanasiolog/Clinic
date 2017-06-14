@@ -25,16 +25,6 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
     private SessionFactory sessionFactory;
 
     @Override
-    public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity department) {
-        HospitalizationEntity hospitalizationEntity = new HospitalizationEntity();
-        hospitalizationEntity.setStartHospitalization(startTime);
-        patient.addHospitalization(hospitalizationEntity);
-        hospitalizationEntity.setIsHospitalizationActual(true);
-        patient.setInClinicNow(true);
-        patient.setLastDepartment(department.getName());
-    }
-
-    @Override
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient) {
         if (patient.getIsInClinicNow()){
             String name = patient.getLastDepartment();
@@ -46,13 +36,7 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
            return null;
     }
 
-    @Override
-    public void hospitalizationEnd(PatientEntity patient, LocalDateTime endTime) {
-           HospitalizationEntity hospitalization = getCurrentHospitalization(patient);
-           hospitalization.setEndHospitalization(endTime);
-           hospitalization.setIsHospitalizationActual(false);
-           patient.setInClinicNow(false);
-    }
+
 
 
 }

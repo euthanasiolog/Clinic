@@ -31,4 +31,14 @@ public class DepartmentServiceImpl extends GenericServiceImpl<DepartmentEntity> 
     public List getCurrentPatients(DepartmentEntity department) {
         return departmentDAO.getCurrentPatients(department);
     }
+
+    @Override
+    public DepartmentEntity getDepartmentByName(String departmentName) {
+        return departmentDAO.getDepartmentByName(departmentName);
+    }
+
+    @Override
+    public List<DepartmentEntity> getAllDepartments() {
+        return departmentDAO.getAllDepartments();
+    }
 }

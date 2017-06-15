@@ -6,6 +6,7 @@ package piatr.asylum.entity.hospitalizationEntity;
 import piatr.asylum.abstractClasses.BaseEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,6 +22,10 @@ import java.util.Set;
 @Entity
 @Table(name = "hospitalization")
 public class HospitalizationEntity extends BaseEntity {
+
+    @JoinColumn
+    @ManyToOne
+    private PatientEntity patient;
 
     //дата поступления
     @Column
@@ -119,5 +124,13 @@ public class HospitalizationEntity extends BaseEntity {
 
     public void setDrugList(Set<DrugEntity> drugList) {
         this.drugList = drugList;
+    }
+
+    public PatientEntity getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientEntity patient) {
+        this.patient = patient;
     }
 }

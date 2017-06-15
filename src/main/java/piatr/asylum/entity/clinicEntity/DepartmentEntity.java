@@ -2,11 +2,11 @@ package piatr.asylum.entity.clinicEntity;
 
 
 import piatr.asylum.abstractClasses.BaseEntity;
+import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.enumerations.Sex;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by piatr on 16.05.17.
@@ -32,6 +32,18 @@ public class DepartmentEntity extends BaseEntity {
 
     @Column
     private Sex sex;
+
+    @JoinTable
+    @ManyToMany
+    private Set<HospitalizationEntity> hospitalizations;
+
+    public Set<HospitalizationEntity> getHospitalizations() {
+        return hospitalizations;
+    }
+
+    public void setHospitalizations(Set<HospitalizationEntity> hospitalizations) {
+        this.hospitalizations = hospitalizations;
+    }
 
     public Sex getSex() {
         return sex;

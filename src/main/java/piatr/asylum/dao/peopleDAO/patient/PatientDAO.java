@@ -13,4 +13,5 @@ import java.time.LocalDateTime;
 
 public interface PatientDAO extends GenericDAO<PatientEntity> {
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
+    public PatientEntity getPatientById(long id);
 }

@@ -9,5 +9,8 @@ public class NewHospitalization {
     @NotBlank
     private String departmentName;
 
+    private String startTime;
+
+
 
 }

@@ -35,4 +35,9 @@ public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implem
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient) {
         return patientDAO.getCurrentHospitalization(patient);
     }
+
+    @Override
+    public PatientEntity getPatientById(long id) {
+        return patientDAO.getPatientById(id);
+    }
 }

@@ -36,7 +36,13 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
            return null;
     }
 
+     @Override
+     public PatientEntity getPatientById(long id) {
+        String patientHQL = "FROM PatientEntity WHERE id=:id";
+        Query query = sessionFactory.getCurrentSession().createQuery(patientHQL);
+        query.setParameter("id", id);
+         return (PatientEntity) query.uniqueResult();
+     }
 
 
-
-}
+ }

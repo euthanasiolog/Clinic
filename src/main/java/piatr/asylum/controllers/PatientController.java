@@ -6,9 +6,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import piatr.asylum.entity.peopleEntity.PatientEntity;
 import piatr.asylum.forms.NewHospitalization;
 import piatr.asylum.service.peopleService.patient.PatientService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 /**
@@ -20,10 +22,21 @@ public class PatientController {
     PatientService patientService;
 
     @RequestMapping(value = "/newHospitalization", method = RequestMethod.GET)
-    public String newHosp(ModelMap modelMap){
+    public String newHosp(ModelMap modelMap, HttpServletRequest request){
+        String id = request.getParameter("id");
         NewHospitalization hospitalization = new NewHospitalization();
         modelMap.addAttribute("newHospitalization", hospitalization);
+        modelMap.addAttribute("id", id);
         return "newHospitalization";
+    }
+
+    @RequestMapping(value = "patientPage", method = RequestMethod.POST)
+    public String getPatientPage(HttpServletRequest request, ModelMap modelMap){
+        String idS = request.getParameter("id");
+        Long id = new Long(idS);
+        PatientEntity patient = patientService.getPatientById(id);
+        modelMap.addAttribute("patient", patient);
+        return "patientPage";
     }
 
     @RequestMapping(value = "/newHospitalization", method = RequestMethod.POST)

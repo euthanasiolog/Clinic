@@ -12,4 +12,5 @@ import java.time.LocalDateTime;
  */
 public interface PatientService extends GenericService<PatientEntity>{
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
+    public PatientEntity getPatientById(long id);
 }

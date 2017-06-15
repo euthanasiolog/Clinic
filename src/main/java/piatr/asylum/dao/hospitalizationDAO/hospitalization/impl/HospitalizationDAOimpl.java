@@ -76,9 +76,9 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     }
 
     @Override
-    public void hospitalizationEnd(PatientEntity patient,
+    public void hospitalizationEnd(HospitalizationEntity hospitalization,
                                    LocalDateTime endTime) {
-        HospitalizationEntity hospitalization = getLastHospitalization(patient);
+        PatientEntity patient = hospitalization.getPatient();
         hospitalization.setEndHospitalization(endTime);
         getLastDepartmentStamp(hospitalization).setToTime(endTime);
         hospitalization.setIsHospitalizationActual(false);

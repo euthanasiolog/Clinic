@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
+import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import java.util.ArrayList;
@@ -26,11 +27,19 @@ public class DepartmentDAOimpl extends GenericDAOImpl<DepartmentEntity> implemen
 
     @Override
     public List<PatientEntity> getCurrentPatients(DepartmentEntity department) {
-        String departmentName = department.getName();
-        String patientsHSQL = "FROM PatientEntity WHERE isInClinicNow = true AND lastDepartment = :departmentName";
-        Query query = sessionFactory.getCurrentSession().createQuery(patientsHSQL);
-        query.setParameter("departmentName", departmentName);
-        List patients = query.list();
+//        String departmentName = department.getName();
+//        String patientsHSQL = "FROM PatientEntity WHERE isInClinicNow = true AND lastDepartment = :departmentName";
+//        Query query = sessionFactory.getCurrentSession().createQuery(patientsHSQL);
+//        query.setParameter("departmentName", departmentName);
+//        List patients = query.list();
+//        return patients;
+        List<HospitalizationEntity> hospitalizations =
+                new ArrayList<>(department.getHospitalizations());
+        ArrayList<PatientEntity> patients = new ArrayList<>();
+        for (HospitalizationEntity hospitalization : hospitalizations){
+            if (hospitalization.getIsHospitalizationActual())
+                patients.add(hospitalization.getPatient());
+        }
         return patients;
     }
 

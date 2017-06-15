@@ -51,7 +51,7 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     }
 
     @Override
-    public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime) {
-        hospitalizationDAO.hospitalizationEnd(patient, localDateTime);
+    public void hospitalizationEnd(HospitalizationEntity hospitalization, LocalDateTime localDateTime) {
+        hospitalizationDAO.hospitalizationEnd(hospitalization, localDateTime);
     }
 }

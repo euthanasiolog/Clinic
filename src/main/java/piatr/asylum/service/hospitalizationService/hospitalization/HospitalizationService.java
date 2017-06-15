@@ -17,5 +17,5 @@ public interface HospitalizationService extends GenericService<HospitalizationEn
     void changeDepartment(HospitalizationEntity hospitalizationEntity, LocalDateTime dateTime,
                           DepartmentEntity department);
     public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity clinicDepartment);
-    public void hospitalizationEnd(PatientEntity patient, LocalDateTime localDateTime);
+    public void hospitalizationEnd(HospitalizationEntity hospitalization, LocalDateTime localDateTime);
 }

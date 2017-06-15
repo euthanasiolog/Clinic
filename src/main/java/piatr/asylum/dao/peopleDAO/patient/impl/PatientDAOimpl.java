@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
  /**
  * Created by piatr on 22.05.17.
@@ -26,14 +27,12 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
 
     @Override
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient) {
-        if (patient.getIsInClinicNow()){
-            String name = patient.getLastDepartment();
-            String getDepartmentHQL = "FROM ClinicDepartmentEntity WHERE name = :name";
-            Query query = sessionFactory.getCurrentSession().createQuery(getDepartmentHQL);
-            query.setParameter("name", name);
-            return (HospitalizationEntity) query.uniqueResult();
-        }else
-           return null;
+        ArrayList<HospitalizationEntity> hospitalizations = new ArrayList<>(patient.getHospitalizations());
+        for (HospitalizationEntity h:hospitalizations){
+            if (h.getIsHospitalizationActual())
+                return h;
+        }
+        return null;
     }
 
      @Override

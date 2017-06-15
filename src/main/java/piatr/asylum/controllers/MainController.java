@@ -53,7 +53,8 @@ public class MainController {
             patientEntity.setPatronymic(newPatient.getPatronymic());
             patientEntity.setDateOfBirth(LocalDateTime.now());
             patientService.create(patientEntity);
-            return "mainDoctorPage";
+            modelMap.addAttribute("patient", patientEntity);
+            return "patientPage";
         }
     }
 

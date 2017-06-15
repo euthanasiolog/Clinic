@@ -45,9 +45,9 @@
         </tr>
     <c:forEach var="patient" items="${patients}" varStatus="patientCount">
         <tr>
-            <td>${patientCount+1}</td>
-            <td>${patient.firstName; patient.secondName; patient.patronymic}</td>
-            <td>${patient.dateOfBirth}</td>
+            <td><c:out value="${patientCount+1}"/></td>
+            <td><c:out value="${patient.firstName; patient.secondName; patient.patronymic}"/></td>
+            <td><c:out value="${patient.dateOfBirth}"/></td>
             <td></td>
             <%--<td>${patientList}</td> тут продумать какие поля как выводить в таблицу--%>
         </tr>

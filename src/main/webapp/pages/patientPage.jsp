@@ -30,7 +30,10 @@
 </div>
 <label for="nh">Добавить госпитализацию</label><br>
 <form action="/newHospitalization" name="id" method="get" id="nh">
-<input name="id" value="${patient.id}" hidden disabled>
+<select name="id" hidden>
+    <option name="id">${patient.id}</option>
+</select>
+    <%--<input name="id" value="${patient.id}" hidden disabled>--%>
     <input type="submit">
 </form>
 </body>

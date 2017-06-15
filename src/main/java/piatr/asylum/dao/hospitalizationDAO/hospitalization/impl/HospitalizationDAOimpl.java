@@ -10,6 +10,7 @@ import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -51,7 +52,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         if (hospitalization.getDepartmentStamps()!=null){
             hospitalization.getDepartmentStamps().add(departmentStamp);
         }else {
-            Set<DepartmentStamp> departmentStamps = new TreeSet<>();
+            Set<DepartmentStamp> departmentStamps = new HashSet<>();
             departmentStamps.add(departmentStamp);
          }
     }
@@ -73,6 +74,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         patient.setInClinicNow(true);
         addDepartmentStamp(hospitalizationEntity, department.getName(), startTime);
         patient.setLastDepartment(department.getName());
+        super.create(hospitalizationEntity);
     }
 
     @Override

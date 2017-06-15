@@ -7,25 +7,30 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-
 <div>
-    Выберите отделение:
-    <form action="/setDepartmentDoctor" method="post">
-        <select>
+    <a href="/newDepartment">Добавить отделение</a>
+</div>
+<div>
+
+    <label for="deps"> Выберите отделение:</label><br>
+    <form action="/setDepartmentDoctor" method="post" id="deps">
+        <label for="dep"></label>
+            <select id="dep" name="department">
             <c:forEach var="dep" items="${departments}">
-                <c:out value="${dep}"/><br>
+                <option name="department" value="${dep.name}">${dep.name}</option>
             </c:forEach>
-        </select>
+            </select><br>
+        <input type="submit"><br>
     </form>
 </div>
-
     <div align="right">
-        <a href="">добавить пациента</a>
+        <a href="/createPatient">добавить пациента</a>
     </div>
 <div>
     <table border="3">
@@ -41,10 +46,11 @@
     <c:forEach var="patient" items="${patients}" varStatus="patientCount">
         <tr>
             <td>${patientCount+1}</td>
-            <td>${patient.name}</td>
+            <td>${patient.firstName; patient.secondName; patient.patronymic}</td>
+            <td>${patient.dateOfBirth}</td>
+            <td></td>
             <%--<td>${patientList}</td> тут продумать какие поля как выводить в таблицу--%>
         </tr>
-
     </c:forEach>
     </table>
 </div>

@@ -2,6 +2,7 @@ package piatr.asylum.entity.clinicEntity;
 
 
 import piatr.asylum.abstractClasses.BaseEntity;
+import piatr.asylum.enumerations.Sex;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,17 @@ public class DepartmentEntity extends BaseEntity {
     @Column
     private
     int volumeOfDepartment;
+
+    @Column
+    private Sex sex;
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;

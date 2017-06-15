@@ -13,7 +13,7 @@ public abstract class BaseEntity implements Serializable {
     @Column
     @Id
     @GeneratedValue
-    public long id;
+    private long id;
 
     public long getId() {
         return id;

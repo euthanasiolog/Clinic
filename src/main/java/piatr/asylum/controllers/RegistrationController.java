@@ -25,7 +25,6 @@ public class RegistrationController {
     @RequestMapping(value = "/reg", method = RequestMethod.GET)
     public String reg(ModelMap modelMap){
         RegForm regForm = new RegForm();
-        regForm.setEmail("dsdeee");
         modelMap.put("regForm", regForm);
         return "regPage";
     }
@@ -36,7 +35,6 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) return "regPage";
         else if (regForm.getPassword().equals(regForm.getConfirmPassword())) {
             modelMap.addAttribute("name", regForm.getFirstName());
-            //DoctorEntity doctorEntity = new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail());
             doctorService.create(new DoctorEntity(regForm.getFirstName(), regForm.getSecondName(), regForm.getLogin(), regForm.getPassword(), regForm.getEmail()));
             return "regOk";
         }

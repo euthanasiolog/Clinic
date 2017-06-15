@@ -16,5 +16,13 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ClinicEmployee extends User implements Serializable{
     @Column
-    public DepartmentEntity department;
+    private DepartmentEntity department;
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
+    }
 }

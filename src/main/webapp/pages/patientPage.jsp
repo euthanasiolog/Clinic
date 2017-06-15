@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<a>Добавить госпитализацию</a>
 </body>
 </html>

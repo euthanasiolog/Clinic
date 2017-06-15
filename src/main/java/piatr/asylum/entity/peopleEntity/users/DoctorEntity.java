@@ -15,11 +15,11 @@ import piatr.asylum.abstractClasses.User;
 @Table(name = "doctor")
 public class DoctorEntity extends ClinicEmployee{
     public DoctorEntity(String firstName, String secondName, String login, String password, String eMail) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.login = login;
+        super.setFirstName(firstName);
+        super.setSecondName(secondName);
+        super.setLogin(login);
         super.setPassword(password);
-        super.seteMail(eMail);
+        super.setEMail(eMail);
     }
 
     public DoctorEntity() {

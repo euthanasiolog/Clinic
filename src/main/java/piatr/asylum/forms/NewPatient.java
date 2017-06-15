@@ -18,16 +18,6 @@ public class NewPatient {
 
     private String patronymic;
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    @NotBlank
-
     private String dateOfBirth;
 
     @NotBlank
@@ -39,6 +29,14 @@ public class NewPatient {
         this.patronymic = "";
         this.adress = "";
         this.dateOfBirth ="";
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getFirstName() {

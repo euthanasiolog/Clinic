@@ -28,6 +28,10 @@ public class PatientEntity extends Human {
     @Column
     private boolean isInClinicNow;
 
+    public void setName(String name){
+
+    }
+
     public boolean getIsInClinicNow() {
         return isInClinicNow;
     }

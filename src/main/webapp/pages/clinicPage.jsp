@@ -13,7 +13,8 @@
 </head>
 <body>
     <div>
-
+<a href="/newDepartment">Создать отделение</a><br>
+        <a href="/mainDoctorPage">На главную</a>
     </div>
 </body>
 </html>

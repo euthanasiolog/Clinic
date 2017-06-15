@@ -14,7 +14,7 @@ import java.io.Serializable;
 public abstract class User extends Human implements Serializable{
 
     @Column
-    public String login;
+    private String login;
 
     @Column
     private String password;
@@ -26,7 +26,7 @@ public abstract class User extends Human implements Serializable{
         return eMail;
     }
 
-    public void seteMail(String eMail) {
+    public void setEMail(String eMail) {
         this.eMail = eMail;
     }
 

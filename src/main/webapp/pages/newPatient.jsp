@@ -13,15 +13,18 @@
     <title>Title</title>
 </head>
 <body>
-    <form:form>
-        <label for="name">Имя: </label><br>
-        <form:input id="name" path="name"/><br><br>
+    <label for="newPatient">Добавить пациента: </label><br>
+    <form:form action="/createPatient" method="post" commandName="newPatient" id="newPatient">
+        <label for="firstName">Имя: </label><br>
+        <form:input id="firstName" path="firstName"/><br><br>
         <label for="secondName">Фамилия: </label><br>
         <form:input id="secondName" path="secondName"/><br><br>
         <label for="patronymic">Отчество: </label><br>
         <form:input id="patronymic" path="patronymic"/><br><br>
         <label for="adress">Адресс: </label><br>
         <form:input id="adress" path="adress"/><br><br>
+        <label for="dateOfBirth">Дата рождения: </label><br>
+        <form:input id="dateOfBirth" path="dateOfBirth"/><br><br>
         <input type="submit">
     </form:form>
 

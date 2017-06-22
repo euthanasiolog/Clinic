@@ -1,7 +1,9 @@
 package piatr.asylum.dao.hospitalizationDAO.hospitalization.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
@@ -20,6 +22,10 @@ import java.util.TreeSet;
 @Repository("hospitalizationDAO")
 @Transactional
 public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity> implements HospitalizationDAO {
+
+    @Autowired
+    private
+    DepartmentDAO departmentDAO;
 
     @Override
     public DepartmentStamp getLastDepartmentStamp(HospitalizationEntity hospitalization) {
@@ -63,6 +69,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         getLastDepartmentStamp(hospitalizationEntity).setToTime(dateTime);
         addDepartmentStamp(hospitalizationEntity, department.getName(), dateTime);
         hospitalizationEntity.getDepartments().add(department);
+        departmentDAO.addHospitalization(department, hospitalizationEntity);
     }
 
     @Override
@@ -75,6 +82,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         addDepartmentStamp(hospitalizationEntity, department.getName(), startTime);
         patient.setLastDepartment(department.getName());
         super.create(hospitalizationEntity);
+        departmentDAO.addHospitalization(department, hospitalizationEntity);
     }
 
     @Override

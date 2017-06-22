@@ -42,9 +42,10 @@ public class HospitalizationEntity extends BaseEntity {
     // отделения в отделение, поэтому многие ко многим
     @Column
     @ManyToMany
-    @JoinTable(name = "HOSP_DEP",
-    joinColumns = {@JoinColumn(name = "HOSP_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
+    @JoinTable
+//            (name = "HOSP_DEP",
+//    joinColumns = {@JoinColumn(name = "HOSP_ID")},
+//            inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
     private Set<DepartmentEntity> departments;
 
     //список лекарств(типа лист назначений)

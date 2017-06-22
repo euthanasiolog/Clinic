@@ -21,10 +21,11 @@
                 <form:option value="${dep.name}">${dep.name}</form:option>
             </c:forEach>
     </form:select><br>
-        <%--<form:hidden path="patientId">${id}</form:hidden>--%>
-        <form:select path="patientId">
+        <div hidden>
+        <form:select path="patientId" disabled="true" >
             <form:option value="${id}"/>
         </form:select>
+        </div>
         <input type="submit">
     </form:form>
 </div>

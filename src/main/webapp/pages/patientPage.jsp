@@ -26,7 +26,6 @@
     </div>
 
 
-
 </div>
 <label for="nh">Добавить госпитализацию</label><br>
 <form action="/newHospitalization" name="id" method="get" id="nh">
@@ -36,5 +35,7 @@
     <%--<input name="id" value="${patient.id}" hidden disabled>--%>
     <input type="submit">
 </form>
+<a href="/createPatient">Ещё пациента?</a><br><br>
+<a href="/mainDoctorPage">На главную</a>
 </body>
 </html>

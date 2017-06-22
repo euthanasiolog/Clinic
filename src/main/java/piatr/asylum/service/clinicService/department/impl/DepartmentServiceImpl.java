@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAO;
 import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
 import piatr.asylum.dao.clinicDAO.department.impl.DepartmentDAOimpl;
+import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.service.clinicService.department.DepartmentService;
@@ -40,5 +41,10 @@ public class DepartmentServiceImpl extends GenericServiceImpl<DepartmentEntity> 
     @Override
     public List<DepartmentEntity> getAllDepartments() {
         return departmentDAO.getAllDepartments();
+    }
+
+    @Override
+    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization) {
+        departmentDAO.addHospitalization(department, hospitalization);
     }
 }

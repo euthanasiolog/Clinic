@@ -73,4 +73,5 @@ public class MainController {
         modelMap.addAttribute("patients", patients);
         return "mainDoctorPage";
     }
+
 }

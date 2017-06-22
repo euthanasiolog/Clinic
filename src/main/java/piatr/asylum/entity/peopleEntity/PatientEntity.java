@@ -29,7 +29,6 @@ public class PatientEntity extends Human {
     private boolean isInClinicNow;
 
     public void setName(String name){
-
     }
 
     public boolean getIsInClinicNow() {

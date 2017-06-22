@@ -2,6 +2,7 @@ package piatr.asylum.dao.clinicDAO.department;
 
 import piatr.asylum.dao.GenericDAO;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
+import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface DepartmentDAO extends GenericDAO<DepartmentEntity> {
     public DepartmentEntity getDepartmentByName(String departmentName);
     public List<DepartmentEntity> getAllDepartments();
     public List<DepartmentEntity> getUserDepartments(String login);
+    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization);
 }

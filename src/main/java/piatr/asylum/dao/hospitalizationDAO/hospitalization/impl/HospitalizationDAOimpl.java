@@ -83,6 +83,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         patient.setLastDepartment(department.getName());
         super.create(hospitalizationEntity);
         departmentDAO.addHospitalization(department, hospitalizationEntity);
+        departmentDAO.update(department);
     }
 
     @Override

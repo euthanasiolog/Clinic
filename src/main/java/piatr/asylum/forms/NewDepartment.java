@@ -17,6 +17,7 @@ public class NewDepartment {
     
     private int volume;
 
+    @NotBlank
     private String sex;
 
     public String getName() {

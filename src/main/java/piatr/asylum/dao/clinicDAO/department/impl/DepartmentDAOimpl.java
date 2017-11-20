@@ -31,16 +31,7 @@ public class DepartmentDAOimpl extends GenericDAOImpl<DepartmentEntity> implemen
         String patientsHSQL = "FROM PatientEntity WHERE isInClinicNow = true AND lastDepartment = :departmentName";
         Query query = sessionFactory.getCurrentSession().createQuery(patientsHSQL);
         query.setParameter("departmentName", departmentName);
-        List patients = query.list();
-        return patients;
-//        List<HospitalizationEntity> hospitalizations =
-//                new ArrayList<>(department.getHospitalizations());
-//        ArrayList<PatientEntity> patients = new ArrayList<>();
-//        for (HospitalizationEntity hospitalization : hospitalizations){
-//            if (hospitalization.getIsHospitalizationActual())
-//                patients.add(hospitalization.getPatient());
-//        }
-//        return patients;
+        return query.list();
     }
 
     @Override

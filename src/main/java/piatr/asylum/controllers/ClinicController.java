@@ -33,7 +33,8 @@ public class ClinicController {
 
     @RequestMapping(value = "/newDepartment", method = RequestMethod.POST)
     public String newDepartment(ModelMap modelMap, @Valid final NewDepartment newDepartment,final BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){return "newDepartmentPage";}
+        if ((bindingResult.hasErrors())||(departmentService.getDepartmentByName(newDepartment.getName())!=null))
+        {return "newDepartmentPage";}
         else {
             DepartmentEntity department = new DepartmentEntity();
             department.setName(newDepartment.getName());

@@ -14,7 +14,8 @@
 <body>
     <form method="get" action="/departments">
         <c:forEach var="deps" items="${departments}">
-            <c:out value="${deps.name}"/> | <c:out value="${deps.sex}"/> | <c:out value="${deps.volumeOfDepartment}"/><br>
+            <c:out value="${deps.name}"/> | <c:out value="${deps.sex}"/> |
+            <c:out value="${deps.volumeOfDepartment}"/><a href="/deleteDepartment">удалить отделение</a> <br>
         </c:forEach>
     </form>
 </body>

@@ -53,6 +53,8 @@
     </c:forEach>
     </table>
 </div>
-
+<div>
+    <a href="/departments">Список отделений</a>
+</div>
 </body>
 </html>

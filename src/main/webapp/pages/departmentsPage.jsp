@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Departments</title>
@@ -15,7 +16,15 @@
     <form method="get" action="/departments">
         <c:forEach var="deps" items="${departments}">
             <c:out value="${deps.name}"/> | <c:out value="${deps.sex}"/> |
-            <c:out value="${deps.volumeOfDepartment}"/><a href="/deleteDepartment">удалить отделение</a> <br>
+            <c:out value="${deps.volumeOfDepartment}"/>
+            <form action="/deleteDepartment" method="get">
+                <select hidden name="departmentName">
+                    <option name="departmentName">${deps.name}</option>
+                </select>
+                <label for="ss">удалить</label>
+                <input type="submit" id="ss">
+            </form>
+        <br>
         </c:forEach>
     </form>
 </body>

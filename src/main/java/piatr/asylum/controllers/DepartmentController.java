@@ -26,8 +26,8 @@ public class DepartmentController {
         return "departmentsPage";
     }
 
-    @RequestMapping (value = "deleteDepartment", method = RequestMethod.POST)
-    public String deleteDepartment (ModelMap modelMap, String departmentName){
+    @RequestMapping (value = "deleteDepartment", method = RequestMethod.GET)
+    public String deleteDepartment (String departmentName){
         DepartmentEntity department = departmentService.getDepartmentByName(departmentName);
         departmentService.delete(department);
         return "departmentsPage";

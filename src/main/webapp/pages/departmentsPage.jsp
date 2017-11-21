@@ -18,11 +18,7 @@
             <c:out value="${deps.name}"/> | <c:out value="${deps.sex}"/> |
             <c:out value="${deps.volumeOfDepartment}"/>
             <form action="/deleteDepartment" method="get">
-                <select hidden name="departmentName">
-                    <option name="departmentName">${deps.name}</option>
-                </select>
-                <label for="ss">удалить</label>
-                <input type="submit" id="ss">
+                <button type="submit" name="departmentName" value="${deps.name}">Удалить</button>
             </form>
         <br>
         </c:forEach>

@@ -46,10 +46,13 @@ public class PatientController {
         return "newHospitalization";
     }
 
-    @RequestMapping(value = "patientPage", method = RequestMethod.POST)
-    public String getPatientPage(HttpServletRequest request, ModelMap modelMap){
-        String idS = request.getParameter("id");
-        Long id = new Long(idS);
+    @RequestMapping(value = "patientPage", method = RequestMethod.GET)
+    public String patientPage(HttpServletRequest request, ModelMap modelMap){
+//        Long pId = new Long(id);
+//        System.out.println(id);
+//
+        String pid = request.getParameter("id");
+        Long id = new Long(pid);
         PatientEntity patient = patientService.getPatientById(id);
         modelMap.addAttribute("patient", patient);
         return "patientPage";
@@ -57,7 +60,7 @@ public class PatientController {
 
     @RequestMapping(value = "/newHospitalization", method = RequestMethod.POST)
     public String newHospitalization(ModelMap modelMap, @Valid final NewHospitalization hospitalization, final BindingResult bindingResult){
-        Long id = new Long(hospitalization.getPatientId());
+        Long id = new Long(hospitalization.getId());
         PatientEntity patient = patientService.getPatientById(id);
         hospitalizationService.hospitalizationStart(patient, LocalDateTime.now(),
                 departmentService.getDepartmentByName(hospitalization.getDepartmentName()));

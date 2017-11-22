@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.GenericDAOImpl;
+import piatr.asylum.dao.peopleDAO.patient.PatientDAO;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.clinicEntity.DepartmentStamp;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
@@ -26,6 +27,9 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     @Autowired
     private
     DepartmentDAO departmentDAO;
+
+    @Autowired
+    PatientDAO patientDAO;
 
     @Override
     public DepartmentStamp getLastDepartmentStamp(HospitalizationEntity hospitalization) {
@@ -75,13 +79,15 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     @Override
     public void hospitalizationStart(PatientEntity patient, LocalDateTime startTime, DepartmentEntity department) {
         HospitalizationEntity hospitalizationEntity = new HospitalizationEntity();
+        super.create(hospitalizationEntity);
         hospitalizationEntity.setStartHospitalization(startTime);
         patient.addHospitalization(hospitalizationEntity);
         hospitalizationEntity.setIsHospitalizationActual(true);
         patient.setInClinicNow(true);
         addDepartmentStamp(hospitalizationEntity, department.getName(), startTime);
         patient.setLastDepartment(department.getName());
-        super.create(hospitalizationEntity);
+        patientDAO.update(patient);
+        super.update(hospitalizationEntity);
         departmentDAO.addHospitalization(department, hospitalizationEntity);
         departmentDAO.update(department);
     }

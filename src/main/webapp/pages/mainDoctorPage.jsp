@@ -44,7 +44,7 @@
         </tr>
     <c:forEach var="patient" items="${patients}" varStatus="patientCount">
         <tr>
-            <td><c:out value="${patientCount+1}"/></td>
+            <td><c:out value="${patientCount}+1"/></td>
             <td><c:out value="${patient.firstName} ${patient.secondName} ${patient.patronymic}"/></td>
             <td><c:out value="${patient.dateOfBirth}"/></td>
             <td></td>

@@ -12,7 +12,7 @@ public class NewHospitalization {
     private String startTime;
 
     @NotBlank
-    private String patientId;
+    private String id;
 
     public String getDepartmentName() {
         return departmentName;
@@ -30,13 +30,20 @@ public class NewHospitalization {
         this.startTime = startTime;
     }
 
-    public String getPatientId() {
-        return patientId;
+    public String getId() {
+        return id;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setId(String id) {
+        this.id = id;
     }
+//    public String getPatientId() {
+//        return patientId;
+//    }
+//
+//    public void setPatientId(String patientId) {
+//        this.patientId = patientId;
+//    }
 
 
 }

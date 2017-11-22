@@ -15,7 +15,9 @@
     <c:forEach var="patient" items="${allPatients}" varStatus="numberPatient">
         <c:out value="${patient.secondName}"/>|
         <c:out value="${patient.firstName}"/>|
-        <c:out value="${patient.patronymic}"/>|<br>
+        <c:out value="${patient.patronymic}"/>|<form action="/patientPage" method="get">
+        <button type="submit" name="id" value="${patient.id}">перейти</button>
+        </form><br>
     </c:forEach>
 </body>
 </html>

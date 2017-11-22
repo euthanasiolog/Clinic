@@ -26,7 +26,7 @@
             <form:option value="М"/>
             <form:option value="Ж"/>
         </form:select><br><br>
-        <input type="submit"><br>
+        <button type="submit">Добавить</button><br>
     </form:form>
 </div>
 </body>

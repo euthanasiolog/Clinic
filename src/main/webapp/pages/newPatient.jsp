@@ -25,7 +25,7 @@
         <form:input id="adress" path="adress"/><br><br>
         <label for="dateOfBirth">Дата рождения: </label><br>
         <form:input id="dateOfBirth" path="dateOfBirth"/><br><br>
-        <input type="submit">
+        <button type="submit">Добавить</button>
     </form:form>
 
 </body>

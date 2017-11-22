@@ -33,7 +33,7 @@
     <option name="id">${patient.id}</option>
 </select>
     <%--<input name="id" value="${patient.id}" hidden disabled>--%>
-    <input type="submit">
+    <button type="submit">Добавить</button>
 </form>
 <a href="/createPatient">Ещё пациента?</a><br><br>
 <a href="/mainDoctorPage">На главную</a>

@@ -13,7 +13,7 @@
 <body>
 <div>ну типа молодец,${name}!</div>
 <form action="/regOk">
-    <input name="Da!" type="submit">
+    <button type="submit">Поехали!</button>
 </form>
 </body>
 </html>

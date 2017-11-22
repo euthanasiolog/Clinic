@@ -27,7 +27,7 @@
     <form:password id="password" path="password" /><br><br>
     <label for="comfirmPassword">Подтвердите пароль:</label><br>
     <form:password id="comfirmPassword" path="confirmPassword"/><br><br>
-    <input type="submit">
+    <button type="submit">Зарегестрироваться</button>
 </form:form>
 </div>
 </body>

@@ -26,7 +26,7 @@
                 <option name="department" value="${dep.name}">${dep.name}</option>
             </c:forEach>
             </select><br>
-        <input type="submit"><br>
+        <button type ="submit">Выбрать</button>
     </form>
 </div>
     <div align="right">

@@ -24,7 +24,7 @@
         <div>Введите пароль:</div>
         <form:password path="password"/><br>
         <hr>
-        <input type="submit">
+        <button type="submit">Войти</button>
     </form:form>
 </div>
 </body>

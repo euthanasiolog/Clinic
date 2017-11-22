@@ -26,7 +26,7 @@
             <form:option value="${id}">${id}</form:option>
         </form:select>
         </div>
-        <input type="submit">
+        <button type="submit">Добавить</button>
     </form:form>
 </div>
 </body>

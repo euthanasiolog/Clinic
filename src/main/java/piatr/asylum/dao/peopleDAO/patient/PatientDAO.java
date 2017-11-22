@@ -6,6 +6,7 @@ import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by piatr on 23.05.17.
@@ -14,4 +15,5 @@ import java.time.LocalDateTime;
 public interface PatientDAO extends GenericDAO<PatientEntity> {
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
     public PatientEntity getPatientById(long id);
+    List<PatientEntity> getAllPatients();
 }

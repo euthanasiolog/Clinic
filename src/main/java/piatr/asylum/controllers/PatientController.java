@@ -17,6 +17,7 @@ import piatr.asylum.service.peopleService.patient.PatientService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,5 +63,12 @@ public class PatientController {
                 departmentService.getDepartmentByName(hospitalization.getDepartmentName()));
         modelMap.addAttribute("patient", patient);
         return "patientPage";
+    }
+
+    @RequestMapping(value = "/getAllPatients", method = RequestMethod.GET)
+    public String getAllPatients(ModelMap modelMap){
+        ArrayList<PatientEntity> allPatients = new ArrayList<>(patientService.getAllPatirnts());
+        modelMap.addAttribute("allPatients", allPatients);
+        return "allPatientsPage";
     }
 }

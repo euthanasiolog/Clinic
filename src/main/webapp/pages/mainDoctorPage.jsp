@@ -56,5 +56,8 @@
 <div>
     <a href="/departments">Список отделений</a>
 </div>
+<div>
+    <a href="/getAllPatients">Список пациентов</a>
+</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import piatr.asylum.entity.peopleEntity.PatientEntity;
 import piatr.asylum.service.GenericService;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by piatr on 26.05.17.
@@ -13,4 +14,5 @@ import java.time.LocalDateTime;
 public interface PatientService extends GenericService<PatientEntity>{
     public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
     public PatientEntity getPatientById(long id);
+    List<PatientEntity> getAllPatirnts();
 }

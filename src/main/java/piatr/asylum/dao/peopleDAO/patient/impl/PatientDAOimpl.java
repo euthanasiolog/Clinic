@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
  /**
  * Created by piatr on 22.05.17.
@@ -43,5 +44,11 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
          return (PatientEntity) query.uniqueResult();
      }
 
+     @Override
+     public List<PatientEntity> getAllPatients() {
+        String getAllPatientsHQL = "FROM PatientEntity";
+         Query query = sessionFactory.getCurrentSession().createQuery(getAllPatientsHQL);
+         return query.list();
+     }
 
  }

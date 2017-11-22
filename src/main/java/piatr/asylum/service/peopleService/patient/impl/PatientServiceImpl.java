@@ -13,6 +13,7 @@ import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.service.peopleService.patient.PatientService;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by piatr on 26.05.17.
@@ -39,5 +40,10 @@ public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implem
     @Override
     public PatientEntity getPatientById(long id) {
         return patientDAO.getPatientById(id);
+    }
+
+    @Override
+    public List<PatientEntity> getAllPatirnts() {
+        return patientDAO.getAllPatients();
     }
 }

@@ -30,7 +30,7 @@ public class DepartmentController {
     public String deleteDepartment (ModelMap modelMap, String departmentName){
         DepartmentEntity department = departmentService.getDepartmentByName(departmentName);
         departmentService.delete(department);
-        return "departmentsPage";
+        return "mainDoctorPage";
     }
 
 }

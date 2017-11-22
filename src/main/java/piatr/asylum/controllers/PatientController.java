@@ -48,9 +48,6 @@ public class PatientController {
 
     @RequestMapping(value = "patientPage", method = RequestMethod.GET)
     public String patientPage(HttpServletRequest request, ModelMap modelMap){
-//        Long pId = new Long(id);
-//        System.out.println(id);
-//
         String pid = request.getParameter("id");
         Long id = new Long(pid);
         PatientEntity patient = patientService.getPatientById(id);

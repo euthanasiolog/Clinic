@@ -71,6 +71,8 @@ public class MainController {
         DepartmentEntity departmentEntity = departmentService.getDepartmentByName(department);
         List<PatientEntity> patients = new ArrayList<>(departmentService.getCurrentPatients(departmentEntity));
         modelMap.addAttribute("patients", patients);
+        List<DepartmentEntity> departments = new ArrayList<>(departmentService.getAllDepartments());
+        modelMap.addAttribute("departments", departments);
         return "mainDoctorPage";
     }
 }

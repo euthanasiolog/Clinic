@@ -1,10 +1,13 @@
 package piatr.asylum.abstractClasses;
 
+import org.hibernate.validator.constraints.NotBlank;
 import piatr.asylum.enumerations.Sex;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by piatr on 18.05.17.

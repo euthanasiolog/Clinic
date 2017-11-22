@@ -1,0 +1,5 @@
+<root>
+    <item name='java.time.LocalDateTime java.lang.String format(java.time.format.DateTimeFormatter)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

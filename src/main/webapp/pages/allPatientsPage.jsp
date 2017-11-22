@@ -19,5 +19,6 @@
         <button type="submit" name="id" value="${patient.id}">перейти</button>
         </form><br>
     </c:forEach>
+    <a href="/mainDoctorPage">На главную</a>
 </body>
 </html>

@@ -29,5 +29,6 @@
         <button type="submit">Добавить</button>
     </form:form>
 </div>
+<a href="/mainDoctorPage">На главную</a>
 </body>
 </html>

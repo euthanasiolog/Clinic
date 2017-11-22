@@ -23,5 +23,6 @@
         <br>
         </c:forEach>
     </form>
+    <a href="/mainDoctorPage">На главную</a>
 </body>
 </html>

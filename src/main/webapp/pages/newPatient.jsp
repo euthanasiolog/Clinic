@@ -27,6 +27,6 @@
         <form:input id="dateOfBirth" path="dateOfBirth"/><br><br>
         <button type="submit">Добавить</button>
     </form:form>
-
+    <a href="/mainDoctorPage">На главную</a>
 </body>
 </html>

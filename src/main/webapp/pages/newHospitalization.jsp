@@ -21,7 +21,7 @@
                 <form:option value="${dep.name}">${dep.name}</form:option>
             </c:forEach>
     </form:select><br>
-        <div >
+        <div hidden>
         <form:select path="id">
             <form:option value="${id}">${id}</form:option>
         </form:select>

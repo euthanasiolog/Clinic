@@ -34,6 +34,13 @@
 </select>
     <button type="submit">Добавить</button>
 </form>
+<form action="/redactPatient">
+    <select name="id" hidden>
+        <option name="id">${patient.id}</option>
+    </select>
+    <button type="submit">Редактировать</button>
+</form>
+</form>
 <a href="/createPatient">Ещё пациента?</a><br><br>
 <a href="/mainDoctorPage">На главную</a>
 </body>

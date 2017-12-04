@@ -18,10 +18,10 @@
     <form:form action="/newHospitalization" method="post" commandName="newHospitalization" id="nh">
     <form:select path="departmentName">
             <c:forEach var="dep" items="${departments}">
-                <form:option value="${dep.name}">${dep.name}</form:option>
+                 <form:option value="${dep.name}">${dep.name}</form:option>
             </c:forEach>
     </form:select><br>
-        <div hidden>
+        <div hidden >
         <form:select path="id">
             <form:option value="${id}">${id}</form:option>
         </form:select>

@@ -13,7 +13,8 @@ import java.util.List;
  */
 
 public interface PatientDAO extends GenericDAO<PatientEntity> {
-    public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
-    public PatientEntity getPatientById(long id);
+    HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
+    PatientEntity getPatientById(long id);
+    PatientEntity getPatientById(String id);
     List<PatientEntity> getAllPatients();
 }

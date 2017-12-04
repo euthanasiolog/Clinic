@@ -12,7 +12,8 @@ import java.util.List;
  * Created by piatr on 26.05.17.
  */
 public interface PatientService extends GenericService<PatientEntity>{
-    public HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
-    public PatientEntity getPatientById(long id);
+    HospitalizationEntity getCurrentHospitalization(PatientEntity patient);
+    PatientEntity getPatientById(long id);
+    PatientEntity getPatientById(String id);
     List<PatientEntity> getAllPatirnts();
 }

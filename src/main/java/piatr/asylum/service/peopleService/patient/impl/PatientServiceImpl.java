@@ -43,6 +43,11 @@ public class PatientServiceImpl extends GenericServiceImpl<PatientEntity> implem
     }
 
     @Override
+    public PatientEntity getPatientById(String id) {
+        return patientDAO.getPatientById(id);
+    }
+
+    @Override
     public List<PatientEntity> getAllPatirnts() {
         return patientDAO.getAllPatients();
     }

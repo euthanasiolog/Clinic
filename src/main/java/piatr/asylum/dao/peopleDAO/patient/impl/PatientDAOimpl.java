@@ -45,6 +45,15 @@ public class PatientDAOimpl extends GenericDAOImpl<PatientEntity> implements Pat
      }
 
      @Override
+     public PatientEntity getPatientById(String id) {
+        Long pId = new Long(id);
+         String patientHQL = "FROM PatientEntity WHERE id=:id";
+         Query query = sessionFactory.getCurrentSession().createQuery(patientHQL);
+         query.setParameter("id", pId);
+         return (PatientEntity) query.uniqueResult();
+     }
+
+     @Override
      public List<PatientEntity> getAllPatients() {
         String getAllPatientsHQL = "FROM PatientEntity";
          Query query = sessionFactory.getCurrentSession().createQuery(getAllPatientsHQL);

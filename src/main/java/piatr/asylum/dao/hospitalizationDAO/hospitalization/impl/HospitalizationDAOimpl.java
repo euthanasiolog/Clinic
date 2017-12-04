@@ -101,5 +101,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         hospitalization.setIsHospitalizationActual(false);
         patient.setInClinicNow(false);
         patient.setLastDepartment(getLastDepartmentStamp(hospitalization).getDepartmentName());
+        super.update(hospitalization);
+        patientDAO.update(patient);
     }
 }

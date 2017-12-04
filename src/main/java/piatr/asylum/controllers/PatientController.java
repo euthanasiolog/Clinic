@@ -17,6 +17,7 @@ import piatr.asylum.service.peopleService.patient.PatientService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -90,16 +91,16 @@ public class PatientController {
         String patronymic = request.getParameter("patronymic");
         String adress = request.getParameter("adress");
         String dateOfBirth = request.getParameter("dateOfBirth");
-        if(firstName!=null){
+        if(firstName!=null&&!firstName.equals("")){
             patient.setFirstName(firstName);
         }
-        if (secondName!=null){
+        if (secondName!=null&&!secondName.equals("")){
             patient.setSecondName(secondName);
         }
-        if (patronymic!=null){
+        if (patronymic!=null&&!patronymic.equals("")){
             patient.setPatronymic(patronymic);
         }
-        if (adress!=null){
+        if (adress!=null&&!adress.equals("")){
             patient.setAdress(adress);
         }
         if (request.getParameter("sex")!=null&&request.getParameter("sex").equals("MALE")){
@@ -108,11 +109,18 @@ public class PatientController {
         if (request.getParameter("sex")!=null&&request.getParameter("sex").equals("FEMALE")){
             patient.setSex(Sex.FEMALE);
         }
-        if (dateOfBirth!=null){
-            patient.setDateOfBirth(LocalDateTime.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd MM yyyy")));
+        if (dateOfBirth!=null&&!dateOfBirth.equals("")){
+            patient.setDateOfBirth(LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
         patientService.update(patient);
         modelMap.addAttribute("patient", patient);
         return "redactPatientPage";
+    }
+
+    @RequestMapping(value ="/deletePatient", method = RequestMethod.GET)
+    public String deletePatient(ModelMap modelMap, HttpServletRequest request){
+        PatientEntity patient = patientService.getPatientById(request.getParameter("id"));
+        patientService.delete(patient);
+        return getAllPatients(modelMap);
     }
 }

@@ -27,7 +27,7 @@
 <label for="sex">Пол:</label><br>
 <input type="radio" name="sex" id="sex" value="MALE">M<input type="radio" name="sex" value="FEMALE">Ж<br>
 <label for="dateOfBirth">Дата рождения:</label><br>
-<input type="date" name="dateOfBirth" id="dateOfBirth"><br>
+<input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="${patient.dateOfBirth}"><br>
 
 <br><br><button type="submit">Редактировать</button>
 </form>

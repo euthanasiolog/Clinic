@@ -6,6 +6,7 @@ import piatr.asylum.enumerations.Sex;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -23,7 +24,7 @@ public abstract class Human extends BaseEntity implements Serializable{
     @Column
     private String patronymic;
     @Column
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
     @Column
     private Sex sex;
     @Column
@@ -53,11 +54,11 @@ public abstract class Human extends BaseEntity implements Serializable{
         this.patronymic = patronymic;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

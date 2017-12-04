@@ -17,7 +17,11 @@
         <c:out value="${patient.secondName}"/>|
         <c:out value="${patient.firstName}"/>|
         <c:out value="${patient.patronymic}"/>|
+        <c:out value="${patient.dateOfBirth}"/>|
         <button type="submit" name="id" value="${patient.id}">перейти</button>
+        </form>
+        <form action="/deletePatient" method="get">
+            <button type="submit" name="id" value="${patient.id}">удалить</button>
         </form><br>
     </c:forEach>
     <a href="/mainDoctorPage">На главную</a>

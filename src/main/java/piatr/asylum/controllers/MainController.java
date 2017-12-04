@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
 
@@ -51,7 +53,7 @@ public class MainController {
             patientEntity.setFirstName(newPatient.getFirstName());
             patientEntity.setSecondName(newPatient.getSecondName());
             patientEntity.setPatronymic(newPatient.getPatronymic());
-            patientEntity.setDateOfBirth(LocalDateTime.now());
+            patientEntity.setDateOfBirth(LocalDate.parse(newPatient.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             patientService.create(patientEntity);
             modelMap.addAttribute("patient", patientEntity);
             return "patientPage";

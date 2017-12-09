@@ -33,18 +33,6 @@ public class DepartmentEntity extends BaseEntity {
     @Column
     private Sex sex;
 
-    @JoinTable
-    @ManyToMany
-    private Set<HospitalizationEntity> hospitalizations;
-
-    public Set<HospitalizationEntity> getHospitalizations() {
-        return hospitalizations;
-    }
-
-    public void setHospitalizations(Set<HospitalizationEntity> hospitalizations) {
-        this.hospitalizations = hospitalizations;
-    }
-
     public Sex getSex() {
         return sex;
     }

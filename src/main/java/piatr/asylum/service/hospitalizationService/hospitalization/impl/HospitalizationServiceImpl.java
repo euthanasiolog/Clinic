@@ -29,11 +29,11 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     protected void setGenericDAO(GenericDAO<HospitalizationEntity> genericDAO){
         super.setGenericDAO(genericDAO);
     }
-
-    @Override
-    public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
-        hospitalizationDAO.addDepartment(department, hospitalization);
-    }
+//
+//    @Override
+//    public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
+//        hospitalizationDAO.addDepartment(department, hospitalization);
+//    }
 
     @Override
     public void addDepartmentStamp(HospitalizationEntity hospitalizationEntity, String departmentName, LocalDateTime fromTime) {
@@ -53,5 +53,15 @@ public class HospitalizationServiceImpl extends GenericServiceImpl<Hospitalizati
     @Override
     public void hospitalizationEnd(HospitalizationEntity hospitalization, LocalDateTime localDateTime) {
         hospitalizationDAO.hospitalizationEnd(hospitalization, localDateTime);
+    }
+
+    @Override
+    public HospitalizationEntity getHospitalizationById(long id) {
+        return hospitalizationDAO.getHospitalizationById(id);
+    }
+
+    @Override
+    public HospitalizationEntity getHospitalizationById(String id) {
+        return hospitalizationDAO.getHospitalizationById(id);
     }
 }

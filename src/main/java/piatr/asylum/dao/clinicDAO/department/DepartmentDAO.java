@@ -14,5 +14,4 @@ public interface DepartmentDAO extends GenericDAO<DepartmentEntity> {
     public DepartmentEntity getDepartmentByName(String departmentName);
     public List<DepartmentEntity> getAllDepartments();
     public List<DepartmentEntity> getUserDepartments(String login);
-    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization);
 }

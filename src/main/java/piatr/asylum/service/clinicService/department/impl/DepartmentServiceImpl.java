@@ -43,8 +43,4 @@ public class DepartmentServiceImpl extends GenericServiceImpl<DepartmentEntity> 
         return departmentDAO.getAllDepartments();
     }
 
-    @Override
-    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization) {
-        departmentDAO.addHospitalization(department, hospitalization);
-    }
 }

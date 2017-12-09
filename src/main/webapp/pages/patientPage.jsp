@@ -16,13 +16,23 @@
 <div>
     <h3>Страница пациента ${patient.secondName.toUpperCase()} ${patient.firstName.toUpperCase()} ${patient.patronymic.toUpperCase()}</h3>
     <div>
-        <c:out value="${patient.dateOfBirth}"/><br>
-        <c:out value="${patient.adress}"/><br>
-        <c:forEach var="hospitalization" items="${patient.hospitalizations}">
+        Дата рождения: <c:out value="${patient.dateOfBirth}"/><br>
+        Адрес: <c:out value="${patient.adress}"/><br>
+        Список госпитализаций:<br> <c:forEach var="hospitalization" items="${patient.hospitalizations}">
+            <c:if test="${hospitalization.isHospitalizationActual}">
+                Актуальная госпитализация:
+            </c:if>
             <c:out value="${hospitalization.startHospitalization}"/>
             <c:out value="${hospitalization.endHospitalization}"/>
-            <c:out value="${hospitalization.isHospitalizationActual}"/>
-        </c:forEach><br>
+            <form action="/redactHospitalization" method="get">
+                <button type="submit" name="hospitalizationId" value="${hospitalization.id}">Перейти к госпитализации</button>
+            </form>
+            <c:if test="${hospitalization.isHospitalizationActual}">
+            <form action="/endHospitalization" method="get">
+                <button type="submit" value="${hospitalization.id}" name="hospitalizationId">Завершить госпитализацию</button>
+            </form>
+            </c:if>
+        <br></c:forEach><br>
     </div>
 
 

@@ -4,8 +4,7 @@ package piatr.asylum.entity.hospitalizationEntity;
 
 
 import piatr.asylum.abstractClasses.BaseEntity;
-import piatr.asylum.entity.clinicEntity.DepartmentEntity;
-import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.stamps.DepartmentStamp;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
 import javax.persistence.*;
@@ -21,7 +20,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "hospitalization")
-public class HospitalizationEntity extends BaseEntity {
+public class  HospitalizationEntity extends BaseEntity implements Comparable{
 
     @JoinColumn
     @ManyToOne
@@ -38,16 +37,6 @@ public class HospitalizationEntity extends BaseEntity {
     //лежит ли пациент прямо сейчас
     private boolean isHospitalizationActual = false;
 
-    //список госпитализаций. пациента могут переводить из
-    // отделения в отделение, поэтому многие ко многим
-    @Column
-    @ManyToMany
-    @JoinTable
-//            (name = "HOSP_DEP",
-//    joinColumns = {@JoinColumn(name = "HOSP_ID")},
-//            inverseJoinColumns = {@JoinColumn(name = "DEP_ID")})
-    private Set<DepartmentEntity> departments;
-
     //список лекарств(типа лист назначений)
     @JoinColumn(name = "drug_list")
     @OneToMany
@@ -58,15 +47,6 @@ public class HospitalizationEntity extends BaseEntity {
     @OneToMany
     private Set<ConsultationEntity> consultList;
 
-    //список отметок отделений. что бы можно было посмотреть, с какого по какое время
-    //и в каком отделении в течение данной госпитализации находился пациент. Изначально для этого задумывался
-    //просто список отделений, но вышла неувязка - время поступления и время убытия не относятся к отделению,
-    // это относится к пациенту, делать такие поля в классе отделения нелогично, да и в одном отделении пациент
-    //может быть более одного раза, поэтому я создал класс-костыль, в нем как раз имя отделения и время
-    // нахождения в нем. По имени отделения можно найти само отделение, и посмотреть информацию о нём.
-    // Зачем тогда список отделений, который выше, я не знаю, но пусть пока будет) никогда не знаешь, что тебе
-    // может понадобиться вскоре, когда я начинал этот проект, и в мыслях не было такой структуры, мне это казалось
-    // примитивнейшей вещью...
     @JoinColumn(name = "department_stamps")
     @OneToMany
     private Set<DepartmentStamp> departmentStamps;
@@ -111,13 +91,7 @@ public class HospitalizationEntity extends BaseEntity {
         this.endHospitalization = endHospitalization;
     }
 
-    public Set<DepartmentEntity> getDepartments() {
-        return departments;
-    }
 
-    public void setDepartments(Set<DepartmentEntity> departments) {
-        this.departments = departments;
-    }
 
     public Set<DrugEntity> getDrugList() {
         return drugList;
@@ -133,5 +107,14 @@ public class HospitalizationEntity extends BaseEntity {
 
     public void setPatient(PatientEntity patient) {
         this.patient = patient;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        HospitalizationEntity hospitalization = (HospitalizationEntity)o;
+        if (this.endHospitalization==null){
+            return 1;
+        }
+        return this.endHospitalization.compareTo(hospitalization.endHospitalization);
     }
 }

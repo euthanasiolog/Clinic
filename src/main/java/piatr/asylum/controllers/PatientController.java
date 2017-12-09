@@ -3,25 +3,20 @@ package piatr.asylum.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import piatr.asylum.entity.clinicEntity.DepartmentEntity;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 import piatr.asylum.enumerations.Sex;
-import piatr.asylum.forms.NewHospitalization;
-import piatr.asylum.service.clinicService.department.DepartmentService;
+import piatr.asylum.service.clinicService.departmentStamp.DepartmentStampService;
 import piatr.asylum.service.hospitalizationService.hospitalization.HospitalizationService;
 import piatr.asylum.service.peopleService.patient.PatientService;
+import piatr.asylum.stamps.DepartmentStamp;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by piatr on 15.06.17.
@@ -32,37 +27,14 @@ public class PatientController {
     private PatientService patientService;
 
     @Autowired
-    private DepartmentService departmentService;
-
-    @Autowired
     private HospitalizationService hospitalizationService;
 
-
-    @RequestMapping(value = "/newHospitalization", method = RequestMethod.GET)
-    public String newHosp(ModelMap modelMap, HttpServletRequest request){
-        String id = request.getParameter("id");
-        NewHospitalization hospitalization = new NewHospitalization();
-        modelMap.addAttribute("newHospitalization", hospitalization);
-        modelMap.addAttribute("id", id);
-        List<DepartmentEntity> departments = departmentService.getAllDepartments();
-        modelMap.addAttribute("departments", departments);
-        return "newHospitalization";
-    }
-
-    @RequestMapping(value = "/newHospitalization", method = RequestMethod.POST)
-    public String newHospitalization(ModelMap modelMap, @Valid final NewHospitalization hospitalization, final BindingResult bindingResult){
-        Long id = new Long(hospitalization.getId());
-        PatientEntity patient = patientService.getPatientById(id);
-        hospitalizationService.hospitalizationStart(patient, LocalDateTime.now(),
-                departmentService.getDepartmentByName(hospitalization.getDepartmentName()));
-        modelMap.addAttribute("patient", patient);
-        return "patientPage";
-    }
+    @Autowired
+    private DepartmentStampService departmentStampService;
 
     @RequestMapping(value = "patientPage", method = RequestMethod.GET)
     public String patientPage(HttpServletRequest request, ModelMap modelMap){
-        String id = request.getParameter("id");
-        PatientEntity patient = patientService.getPatientById(id);
+        PatientEntity patient = patientService.getPatientById(request.getParameter("id"));
         modelMap.addAttribute("patient", patient);
         return "patientPage";
     }
@@ -120,6 +92,12 @@ public class PatientController {
     @RequestMapping(value ="/deletePatient", method = RequestMethod.GET)
     public String deletePatient(ModelMap modelMap, HttpServletRequest request){
         PatientEntity patient = patientService.getPatientById(request.getParameter("id"));
+        for (HospitalizationEntity hosp:patient.getHospitalizations()){
+            for (DepartmentStamp ds:hosp.getDepartmentStamps()){
+                departmentStampService.delete(ds);
+            }
+            hospitalizationService.delete(hosp);
+        }
         patientService.delete(patient);
         return getAllPatients(modelMap);
     }

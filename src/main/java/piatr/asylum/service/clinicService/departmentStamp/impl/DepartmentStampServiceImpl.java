@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAO;
-import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.stamps.DepartmentStamp;
 import piatr.asylum.service.GenericServiceImpl;
 import piatr.asylum.service.clinicService.departmentStamp.DepartmentStampService;
 

@@ -1,4 +1,4 @@
-package piatr.asylum.entity.clinicEntity;
+package piatr.asylum.stamps;
 
 import piatr.asylum.abstractClasses.BaseEntity;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * Created by piatr on 12.06.17.
  */
 @Entity
-public class DepartmentStamp extends BaseEntity
+public class DepartmentStamp extends BaseEntity implements Comparable
 {
     @Column
     private String departmentName;
@@ -43,5 +43,15 @@ public class DepartmentStamp extends BaseEntity
 
     public void setToTime(LocalDateTime toTime) {
         this.toTime = toTime;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        DepartmentStamp departmentStamp = (DepartmentStamp)o;
+        if (this.toTime==null){
+            return 1;
+        }
+        return this.toTime.compareTo(departmentStamp.toTime);
     }
 }

@@ -15,10 +15,10 @@
 <body>
     <label for="newPatient">Добавить пациента: </label><br>
     <form:form action="/createPatient" method="post" commandName="newPatient" id="newPatient">
-        <label for="firstName">Имя: </label><br>
-        <form:input id="firstName" path="firstName"/><br><br>
         <label for="secondName">Фамилия: </label><br>
         <form:input id="secondName" path="secondName"/><br><br>
+        <label for="firstName">Имя: </label><br>
+        <form:input id="firstName" path="firstName"/><br><br>
         <label for="patronymic">Отчество: </label><br>
         <form:input id="patronymic" path="patronymic"/><br><br>
         <label for="adress">Адресс: </label><br>

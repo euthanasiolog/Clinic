@@ -14,5 +14,4 @@ public interface DepartmentService extends GenericService<DepartmentEntity> {
     public List<PatientEntity> getCurrentPatients(DepartmentEntity department);
     public DepartmentEntity getDepartmentByName(String departmentName);
     public List<DepartmentEntity> getAllDepartments();
-    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization);
 }

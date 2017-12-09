@@ -49,15 +49,9 @@ public class DepartmentDAOimpl extends GenericDAOImpl<DepartmentEntity> implemen
         return  query.list();
     }
 
-
-
     @Override
     public List<DepartmentEntity> getUserDepartments(String login) {
         return null;
     }
 
-    @Override
-    public void addHospitalization(DepartmentEntity department, HospitalizationEntity hospitalization) {
-        department.getHospitalizations().add(hospitalization);
-    }
 }

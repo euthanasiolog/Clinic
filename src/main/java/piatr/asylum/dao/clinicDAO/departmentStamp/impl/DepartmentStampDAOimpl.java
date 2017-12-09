@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.dao.clinicDAO.departmentStamp.DepartmentStampDAO;
-import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.stamps.DepartmentStamp;
 
 /**
  * Created by piatr on 12.06.17.

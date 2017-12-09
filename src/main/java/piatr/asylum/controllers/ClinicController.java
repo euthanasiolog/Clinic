@@ -41,7 +41,6 @@ public class ClinicController {
             department.setVolumeOfDepartment(newDepartment.getVolume());
             if(newDepartment.getSex().equals("male")){department.setSex(Sex.MALE);}else {
             if (newDepartment.getSex().equals("female"))department.setSex(Sex.FEMALE);}
-            department.setHospitalizations(new HashSet<>());
             departmentService.create(department);
             return "clinicPage";
         }

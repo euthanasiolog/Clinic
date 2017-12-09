@@ -1,17 +1,20 @@
 package piatr.asylum.dao.hospitalizationDAO.hospitalization.impl;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import piatr.asylum.dao.clinicDAO.department.DepartmentDAO;
+import piatr.asylum.dao.clinicDAO.departmentStamp.DepartmentStampDAO;
 import piatr.asylum.dao.hospitalizationDAO.hospitalization.HospitalizationDAO;
 import piatr.asylum.dao.GenericDAOImpl;
 import piatr.asylum.dao.peopleDAO.patient.PatientDAO;
 import piatr.asylum.entity.clinicEntity.DepartmentEntity;
-import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.stamps.DepartmentStamp;
 import piatr.asylum.entity.hospitalizationEntity.HospitalizationEntity;
 import piatr.asylum.entity.peopleEntity.PatientEntity;
 
+import org.hibernate.query.Query;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +32,13 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
     DepartmentDAO departmentDAO;
 
     @Autowired
+    SessionFactory sessionFactory;
+
+    @Autowired
     PatientDAO patientDAO;
+
+    @Autowired
+    DepartmentStampDAO departmentStampDAO;
 
     @Override
     public DepartmentStamp getLastDepartmentStamp(HospitalizationEntity hospitalization) {
@@ -39,18 +48,8 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
 
     @Override
     public HospitalizationEntity getLastHospitalization(PatientEntity patient) {
-        TreeSet<HospitalizationEntity> hospitalizationEntities = new TreeSet<>(patient.getHospitalizations());
+         TreeSet<HospitalizationEntity> hospitalizationEntities = new TreeSet<>(patient.getHospitalizations());
         return hospitalizationEntities.last();
-    }
-
-    @Override
-    public void addDepartment(DepartmentEntity department, HospitalizationEntity hospitalization) {
-        if (hospitalization.getDepartments()!=null){
-        hospitalization.getDepartments().add(department);
-        } else {
-            Set<DepartmentEntity> departmentEntities = new TreeSet<>();
-            departmentEntities.add(department);
-        }
     }
 
     @Override
@@ -59,11 +58,15 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         DepartmentStamp departmentStamp = new DepartmentStamp();
         departmentStamp.setDepartmentName(departmentName);
         departmentStamp.setFromTime(fromTime);
+        departmentStampDAO.create(departmentStamp);
         if (hospitalization.getDepartmentStamps()!=null){
             hospitalization.getDepartmentStamps().add(departmentStamp);
+            super.update(hospitalization);
         }else {
             Set<DepartmentStamp> departmentStamps = new HashSet<>();
             departmentStamps.add(departmentStamp);
+            hospitalization.setDepartmentStamps(departmentStamps);
+            super.update(hospitalization);
          }
     }
 
@@ -72,8 +75,7 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
                                  DepartmentEntity department) {
         getLastDepartmentStamp(hospitalizationEntity).setToTime(dateTime);
         addDepartmentStamp(hospitalizationEntity, department.getName(), dateTime);
-        hospitalizationEntity.getDepartments().add(department);
-        departmentDAO.addHospitalization(department, hospitalizationEntity);
+        super.update(hospitalizationEntity);
     }
 
     @Override
@@ -84,12 +86,11 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         patient.addHospitalization(hospitalizationEntity);
         hospitalizationEntity.setIsHospitalizationActual(true);
         patient.setInClinicNow(true);
+        hospitalizationEntity.setPatient(patient);
         addDepartmentStamp(hospitalizationEntity, department.getName(), startTime);
         patient.setLastDepartment(department.getName());
         patientDAO.update(patient);
         super.update(hospitalizationEntity);
-        departmentDAO.addHospitalization(department, hospitalizationEntity);
-        departmentDAO.update(department);
     }
 
     @Override
@@ -102,6 +103,21 @@ public class HospitalizationDAOimpl extends GenericDAOImpl<HospitalizationEntity
         patient.setInClinicNow(false);
         patient.setLastDepartment(getLastDepartmentStamp(hospitalization).getDepartmentName());
         super.update(hospitalization);
+        departmentStampDAO.update(getLastDepartmentStamp(hospitalization));
         patientDAO.update(patient);
+    }
+
+    @Override
+    public HospitalizationEntity getHospitalizationById(long id) {
+        String hospitalizationHQL = "FROM HospitalizationEntity WHERE id=:id";
+        Query query = sessionFactory.getCurrentSession().createQuery(hospitalizationHQL);
+        query.setParameter("id", id);
+        return (HospitalizationEntity) query.uniqueResult();
+    }
+
+    @Override
+    public HospitalizationEntity getHospitalizationById(String id) {
+        Long pId = new Long(id);
+        return getHospitalizationById(pId);
     }
 }

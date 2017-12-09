@@ -1,6 +1,6 @@
 package piatr.asylum.service.clinicService.departmentStamp;
 
-import piatr.asylum.entity.clinicEntity.DepartmentStamp;
+import piatr.asylum.stamps.DepartmentStamp;
 import piatr.asylum.service.GenericService;
 
 /**

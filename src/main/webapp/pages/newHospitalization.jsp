@@ -16,9 +16,10 @@
 <div>
     <label for="nh">Добавить госпитализацию: </label><br>
     <form:form action="/newHospitalization" method="post" commandName="newHospitalization" id="nh">
-    <form:select path="departmentName">
+        <label for="dep">Выберите отделение:</label>
+        <form:select path="departmentName" id="dep">
             <c:forEach var="dep" items="${departments}">
-                 <form:option value="${dep.name}">${dep.name}</form:option>
+                <form:option value="${dep.name}">${dep.name}</form:option>
             </c:forEach>
     </form:select><br>
         <div hidden >

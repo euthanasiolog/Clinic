@@ -9,6 +9,7 @@ public class NewHospitalization {
     @NotBlank
     private String departmentName;
 
+
     private String startTime;
 
     @NotBlank
@@ -37,13 +38,5 @@ public class NewHospitalization {
     public void setId(String id) {
         this.id = id;
     }
-//    public String getPatientId() {
-//        return patientId;
-//    }
-//
-//    public void setPatientId(String patientId) {
-//        this.patientId = patientId;
-//    }
-
 
 }

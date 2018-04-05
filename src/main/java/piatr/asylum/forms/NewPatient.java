@@ -4,7 +4,12 @@ import org.hibernate.validator.constraints.NotBlank;
 import piatr.asylum.enumerations.Sex;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by piatr on 03.06.17.
@@ -18,7 +23,10 @@ public class NewPatient {
 
     private String patronymic;
 
+    @NotNull
     private String dateOfBirth;
+
+    private LocalDate dateBirth;
 
     @NotBlank
     private String adress;
@@ -30,7 +38,13 @@ public class NewPatient {
         this.adress = "";
         this.dateOfBirth ="";
     }
+    public LocalDate getDateBirth() {
+        return dateBirth;
+    }
 
+    public void setDateBirth(LocalDate dateBirth) {
+        this.dateBirth = dateBirth;
+    }
     public String getDateOfBirth() {
         return dateOfBirth;
     }

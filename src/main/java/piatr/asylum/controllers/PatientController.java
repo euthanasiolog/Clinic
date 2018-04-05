@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Created by piatr on 15.06.17.
  */
 @Controller
-public class PatientController {
+public class  PatientController {
     @Autowired
     private PatientService patientService;
 
